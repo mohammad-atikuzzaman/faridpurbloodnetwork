@@ -5,11 +5,34 @@ import { Link, NavLink } from "react-router-dom";
 import menus from "../utils/navmenu";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import Loading from "./Loading";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
-  const { user, loading } = useContext(AuthContext);
-  console.log(user)
+  const { user, loading , logOut} = useContext(AuthContext);
+  // console.log(user)
+
+  const handleLogout =()=>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "লগ আউট সফল হয়েছে",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
+    .catch(err=>{
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+  }
 
   return (
     <div className="navbar sticky top-0 mb-4 z-20 bg-white shadow-md rounded-md container mx-auto">
@@ -94,7 +117,7 @@ const Navbar = () => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <button className="btn btn-error text-white">Logout</button>
+                <button onClick={handleLogout} className="btn btn-error text-white">Logout</button>
               </li>
             </ul>
           </div>

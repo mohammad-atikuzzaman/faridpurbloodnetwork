@@ -28,7 +28,7 @@ export default function App() {
         className="mySwiper text-red-400"
       >
         <SwiperSlide>
-          <div className='bg-[url("./image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
+          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  md:w-[95%]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Architecto, sint.
@@ -44,7 +44,7 @@ export default function App() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className='bg-[url("./image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
+          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Architecto, sint.
@@ -60,7 +60,7 @@ export default function App() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className='bg-[url("./image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
+          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Architecto, sint.
@@ -76,7 +76,7 @@ export default function App() {
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className='bg-[url("./image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
+          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Architecto, sint.

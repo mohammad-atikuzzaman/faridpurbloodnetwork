@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContextComponent";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { logInWithEmailPass } = useContext(AuthContext);
+  const navigate = useNavigate()
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,7 +15,16 @@ const Login = () => {
     // console.log(userEmail, password);
 
     logInWithEmailPass(userEmail, password)
-    .then((cred)=>console.log(cred.user))
+    .then(()=>{
+      navigate("/")
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "লগইন সফল হয়েছে",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    })
     .catch((err)=>console.error(err))
   };
   return (
