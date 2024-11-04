@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdCloseCircle } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import menus from "../utils/navmenu";
+import { AuthContext } from "../contexts/AuthContextComponent";
+import Loading from "./Loading";
 
 const Navbar = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const { user, loading } = useContext(AuthContext);
+  console.log(user)
 
   return (
     <div className="navbar sticky top-0 mb-4 z-20 bg-white shadow-md rounded-md container mx-auto">
@@ -29,8 +33,13 @@ const Navbar = () => {
               {menus?.map((m, i) => (
                 <li key={i}>
                   <NavLink
-                  className={({ isActive }) => (isActive ? "text-red-600 font-semibold underline" : "")}
-                  to={m.url}>{m.menu}</NavLink>
+                    className={({ isActive }) =>
+                      isActive ? "text-red-600 font-semibold underline" : ""
+                    }
+                    to={m.url}
+                  >
+                    {m.menu}
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -45,7 +54,9 @@ const Navbar = () => {
           {menus?.map((m, i) => (
             <li key={i} className="bg-transparent">
               <NavLink
-                className={({ isActive }) => (isActive ? "text-red-600 font-semibold underline" : "")}
+                className={({ isActive }) =>
+                  isActive ? "text-red-600 font-semibold underline" : ""
+                }
                 to={m?.url}
               >
                 {m?.menu}
@@ -55,37 +66,46 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt={user?.displayName}
+                  src={user?.photoURL}
+                />
+              </div>
             </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">{user?.displayName}</a>
+              </li>
+              <li>
+                <a>{user?.email}</a>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <button className="btn btn-error text-white">Logout</button>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+        ) : loading? <Loading/>: (
+          <Link
+            to="/login"
+            className="btn font-bold text-lg bg-red-500 text-white"
           >
-            <li>
-              <a className="justify-between">
-                Profile
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
-        <Link to="/login" className="btn font-bold text-lg bg-red-500 text-white">Login</Link>
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

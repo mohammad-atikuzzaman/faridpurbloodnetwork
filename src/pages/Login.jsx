@@ -9,7 +9,9 @@ const Login = () => {
     const form = e.target;
     const userEmail = form.email.value;
     const password = form.password.value;
-    console.log(userEmail, password);
+
+    // console.log(userEmail, password);
+
     logInWithEmailPass(userEmail, password)
     .then((cred)=>console.log(cred.user))
     .catch((err)=>console.error(err))
