@@ -44,8 +44,7 @@ const Register = () => {
       !isEnglishOnly(userName) ||
       !isEnglishOnly(password) ||
       !isEnglishOnly(phone) ||
-      !isEnglishOnly(village) ||
-      !isEnglishOnly(bloodGroup)
+      !isEnglishOnly(village)
     ) {
       return Swal.fire({
         icon: "error",
