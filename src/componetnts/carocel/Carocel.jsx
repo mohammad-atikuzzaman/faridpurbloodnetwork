@@ -25,7 +25,7 @@ export default function App() {
           disableOnInteraction: false,
         }}
         modules={[Navigation, Pagination, Keyboard, Autoplay]}
-        className="mySwiper text-red-400"
+        className="mySwiper text-gray-500"
       >
         <SwiperSlide>
           <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>

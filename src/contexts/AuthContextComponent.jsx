@@ -12,6 +12,7 @@ export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthContextComponent = ({ children }) => {
+  const [userinfo, setUserInfo] = useState({});
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -50,6 +51,8 @@ const AuthContextComponent = ({ children }) => {
     setUser,
     loading,
     setLoading,
+    setUserInfo,
+    userinfo
   };
 
   return (
