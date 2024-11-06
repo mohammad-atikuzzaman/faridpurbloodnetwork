@@ -7,7 +7,7 @@ const useIsAdmin = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthContext);
-
+  
   useEffect(() => {
     if (!user?.email) return;
 

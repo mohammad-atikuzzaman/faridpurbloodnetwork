@@ -1,12 +1,35 @@
+import { useContext } from "react";
+import Loading from "../componetnts/Loading";
 import useIsAdmin from "../hooks/useIsAdmin";
-
-const isAdmin = true;
+import { AuthContext } from "../contexts/AuthContextComponent";
 
 const AdminProtected = ({ children }) => {
-  const {admin} = useIsAdmin()
-  console.log(admin)
-  
-  if (!isAdmin) {
+  const { admin, error, loading } = useIsAdmin();
+  const {user}= useContext(AuthContext)
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-center">
+        <div className="space-y-6 text-yellow-600">
+          <p className="text-2xl font-semibold">দুঃক্ষিত..!</p>
+          <h2 className="text-lg ">শুধু এডমিন গন এই পেজ দেখতে পারবে</h2>
+          <a href="/" className="btn bg-yellow-600 font-bold text-white">
+            Back To Home
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+
+  if(error){
+    return <div className="w-full min-h-screen flex items-center justify-center">{error}</div>
+  }
+
+  if(loading){
+    return <div className="w-full min-h-screen flex items-center justify-center"><Loading/></div>
+  }
+
+  if (admin !== "admin") {
     return (
       <div className="min-h-screen flex items-center justify-center text-center">
         <div className="space-y-6 text-yellow-600">
