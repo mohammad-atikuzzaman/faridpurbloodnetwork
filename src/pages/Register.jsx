@@ -20,6 +20,7 @@ const Register = () => {
     const phone = form.phone.value;
     const village = form.village.value;
     const bloodGroup = form.bloodGroup.value;
+    const lastDonationDate = form.date.value;
     const file = form.photo.files[0]; // Access the file from input
 
     // validation blood group
@@ -74,9 +75,10 @@ const Register = () => {
             phone,
             village,
             bloodGroup,
+            lastDonationDate,
             photoUrl,
           };
-          console.log(userInfo);
+          //console.log(userInfo);
 
           // Register the user with email, password
           registerWithEmailPass(userEmail, password)
@@ -107,7 +109,7 @@ const Register = () => {
               axios
                 .post(`${import.meta.env.VITE_BASE_URL}/save-user`, userInfo)
                 .then((res) => {
-                  console.log(res);
+                  //console.log(res);
                 })
                 .catch((err) => {
                   Swal.fire({
@@ -129,10 +131,10 @@ const Register = () => {
               });
             });
         } else {
-          console.error("Image upload failed:", data.error);
+          //console.error("Image upload failed:", data.error);
         }
       } catch (error) {
-        console.error("Error uploading image:", error);
+        //console.error("Error uploading image:", error);
       }
     } else {
       Swal.fire({
@@ -220,6 +222,20 @@ const Register = () => {
               </select>
             </div>
 
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-semibold">
+                  বিগত রক্ত দানের তারিখ
+                </span>
+              </label>
+              <input
+                type="date"
+                name="date"
+                placeholder="বিগত রক্ত দানের তারিখ"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold">পাসওয়ার্ড</span>

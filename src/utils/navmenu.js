@@ -7,7 +7,7 @@ const menus = [
     {
         icon: "Hello",
         menu: "ডোনার",
-        url: "/donner"
+        url: "/donners"
     },
     {
         icon: "Hello",

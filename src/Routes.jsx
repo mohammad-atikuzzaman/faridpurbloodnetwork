@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import Donners from "./pages/Donners";
+import DonnerDetail from "./pages/DonnerDetail";
+import AdminProtected from "./protected/AdminProtected";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +32,12 @@ const router = createBrowserRouter([
             element: <Profile/>
         },
         {
-            path:"/donner",
-            element: <Home/>
+            path:"/donner-details/:id",
+            element: <AdminProtected><DonnerDetail/></AdminProtected>
+        },
+        {
+            path:"/donners",
+            element: <Donners/>
         },
         {
             path:"/activity",

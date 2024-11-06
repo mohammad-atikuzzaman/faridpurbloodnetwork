@@ -28,67 +28,14 @@ export default function App() {
         className="mySwiper text-gray-500"
       >
         <SwiperSlide>
-          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  md:w-[95%]">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Architecto, sint.
-            </h2>
-            <p className="font-medium">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim in
-              ab pariatur, fugit perspiciatis quia expedita dolorem sit
-              perferendis soluta repellendus incidunt dolor ut eius, nam nemo!
-              Porro est at possimus cupiditate molestiae animi vero aperiam
-              tempora!
-            </p>
-          </div>
+          <img src="/fbnslide1.jpg" alt="" />
         </SwiperSlide>
 
         <SwiperSlide>
-          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Architecto, sint.
-            </h2>
-            <p className="font-medium">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim in
-              ab pariatur, fugit perspiciatis quia expedita dolorem sit
-              perferendis soluta repellendus incidunt dolor ut eius, nam nemo!
-              Porro est at possimus cupiditate molestiae animi vero aperiam
-              tempora!
-            </p>
-          </div>
+         <img src="/fbnslide2.jpg" alt="" />
         </SwiperSlide>
-
         <SwiperSlide>
-          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Architecto, sint.
-            </h2>
-            <p className="font-medium">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim in
-              ab pariatur, fugit perspiciatis quia expedita dolorem sit
-              perferendis soluta repellendus incidunt dolor ut eius, nam nemo!
-              Porro est at possimus cupiditate molestiae animi vero aperiam
-              tempora!
-            </p>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div className='bg-[url("/image.jpg")] bg-cover bg-center space-y-28 flex flex-col items-center justify-center min-h-[500px]'>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold md:w-[95%]">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Architecto, sint.
-            </h2>
-            <p className="font-medium">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim in
-              ab pariatur, fugit perspiciatis quia expedita dolorem sit
-              perferendis soluta repellendus incidunt dolor ut eius, nam nemo!
-              Porro est at possimus cupiditate molestiae animi vero aperiam
-              tempora!
-            </p>
-          </div>
+         <img src="/fbnslide3.jpg" alt="" />
         </SwiperSlide>
       </Swiper>
     </>

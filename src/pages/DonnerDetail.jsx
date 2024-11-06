@@ -1,34 +1,33 @@
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../contexts/AuthContextComponent";
 import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { getDifferenceInDays } from "../componetnts/Donner";
 
-const Profile = () => {
-  const { user, setUserInfo, userinfo } = useContext(AuthContext);
-
-  const getUserInfo = async (email) => {
-    const res = await axios(
-      `${import.meta.env.VITE_BASE_URL}/user-info/${email}`
-    );
-    setUserInfo(res?.data);
-  };
-
+const DonnerDetail = () => {
+  const { id } = useParams();
+  const [data, setData] = useState({});
   useEffect(() => {
-    getUserInfo(user?.email);
-  }, [user]);
+    axios(`${import.meta.env.VITE_BASE_URL}/donner-details/${id}`)
+      .then((res) => setData(res?.data))
+      .catch((err) => console.error(err));
+  }, [id]);
+
+  const donationDiff = getDifferenceInDays(data?.lastDonation || new Date());
 
   return (
     <div>
       <div className="mx-auto bg-gradient bg-red-400 py-6">
         <img
-          src={user?.photoURL || "/logo.png"}
-          alt={user?.displayName || "user Name"}
+          src={data?.photo || "/logo.png"}
+          alt={data?.display || "user Name"}
           className="w-[200px] h-auto rounded-full mx-auto bg-white border-4 hover:bg-gray-400 transi"
         />
         <h2 className="font-bold text-white text-3xl md:text-4xl lg:text-5xl mt-8 text-center">
-          {user?.displayName}
+          {data?.name}
         </h2>
       </div>
-      {user && (
+      {data && (
         <div className="overflow-x-auto mb-6">
           <table className="table table-zebra text-center">
             {/* head */}
@@ -41,20 +40,25 @@ const Profile = () => {
             <tbody>
               <tr>
                 <td>ব্লাড গ্রুপ</td>
-                <td>{userinfo?.bloodGroup}</td>
+                <td>{data?.blood}</td>
               </tr>
               <tr>
                 <td>ফোন নাম্বার</td>
-                <td>{userinfo?.phone}</td>
+                <td>{data?.phone}</td>
               </tr>
               <tr>
-                <td>ফোন নাম্বার</td>
-                <td>{userinfo?.userEmail}</td>
+                <td>শেষ রক্ত দান করেছে</td>
+                <td>{donationDiff} <span>দিন আগে</span></td>
+              </tr>
+              <tr>
+                <td>ইমেইল </td>
+                <td>{data?.email}</td>
               </tr>
               <tr>
                 <td>গ্রাম</td>
-                <td>{userinfo?.village}</td>
+                <td>{data?.village}</td>
               </tr>
+
             </tbody>
           </table>
         </div>
@@ -63,4 +67,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default DonnerDetail;
