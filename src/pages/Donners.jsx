@@ -29,7 +29,7 @@ const Donners = () => {
   // console.log(donners);
   // console.log(villages);
   return (
-    <div className="overflow-x-auto">
+    <div className="">
       <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-8">
         <>
           <form
@@ -77,19 +77,21 @@ const Donners = () => {
           </select>
         </div>
       </div>
-      <table className="table text-center">
-        <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
-          <tr>
-            <th>নাম/ঠিকানা</th>
-            <th>ব্লাড গ্রুপ</th>
-            <th>স্ট্যাটাস</th>
-            <th>একশন</th>
-          </tr>
-        </thead>
-        {donners.map((donner, index) => (
-          <Donner key={index} donner={donner} />
-        ))}
-      </table>
+      <div className=" overflow-x-auto">
+        <table className="table text-center">
+          <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
+            <tr>
+              <th>নাম/ঠিকানা</th>
+              <th>ব্লাড গ্রুপ</th>
+              <th>স্ট্যাটাস</th>
+              <th>একশন</th>
+            </tr>
+          </thead>
+          {donners.map((donner, index) => (
+            <Donner key={index} donner={donner} />
+          ))}
+        </table>
+      </div>
     </div>
   );
 };
