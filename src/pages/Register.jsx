@@ -211,14 +211,14 @@ const Register = () => {
                 className="select select-bordered w-full max-w-xs"
               >
                 <option value="">-- অপশন নির্বাচন করুন --</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
+                <option value="A-positive">A+</option>
+                <option value="A-negative">A-</option>
+                <option value="B-positive">B+</option>
+                <option value="B-negative">B-</option>
+                <option value="AB-positive">AB+</option>
+                <option value="AB-negative">AB-</option>
+                <option value="O-positive">O+</option>
+                <option value="O-negative">O-</option>
               </select>
             </div>
 

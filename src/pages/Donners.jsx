@@ -4,13 +4,20 @@ import Donner from "../componetnts/Donner";
 import { FaSearch } from "react-icons/fa";
 
 const Donners = () => {
-  const [donners, setDonners] = useState([]);
+  const [donner, setDonner] = useState([]);
   const [villages, setVillages] = useState([]);
 
   const [selectedVillage, setSelectedVillage] = useState("");
   console.log(selectedVillage);
   const [selectedBloodGroup, setSelectedBloodGroup] = useState("");
   console.log(selectedBloodGroup);
+  const [search, setSearch] = useState("");
+  console.log(search);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.search.value);
+  };
 
   const fetchVillage = () => {
     axios(`${import.meta.env.VITE_BASE_URL}/villages`)
@@ -20,24 +27,30 @@ const Donners = () => {
 
   useEffect(() => {
     fetchVillage();
-    axios(`${import.meta.env.VITE_BASE_URL}/donner's`)
+    axios(
+      `${
+        import.meta.env.VITE_BASE_URL
+      }/donner?village=${selectedVillage}&bloodGroup=${selectedBloodGroup}&userName=${search}`
+    )
       .then((res) => {
-        setDonners(res.data);
+        setDonner(res.data);
       })
       .catch((err) => console.error(err));
-  }, []);
-  // console.log(donners);
+  }, [selectedVillage, selectedBloodGroup, search]);
+
+  // console.log(donner);
   // console.log(villages);
   return (
     <div className="">
       <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-8">
         <>
           <form
-            action=""
+            onSubmit={handleSearch}
             className="bg-white w-[90%] mx-auto rounded-md flex items-center"
           >
             <input
               type="text"
+              name="search"
               placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
               className="w-[90%] p-4 bg-transparent outline-none border-none"
             />
@@ -53,7 +66,7 @@ const Donners = () => {
             onChange={(e) => setSelectedVillage(e.target.value)}
             className="border border-red-400 text-gray-600 font-semibold p-2 rounded-md outline-none"
           >
-            <option defaultValue="">--গ্রাম এর নাম--</option>
+            <option value="">--গ্রাম এর নাম--</option>
             {villages.map((village, i) => (
               <option key={i} value={village}>
                 {village}
@@ -65,15 +78,15 @@ const Donners = () => {
             onChange={(e) => setSelectedBloodGroup(e.target.value)}
             className="border border-red-400 text-gray-600 font-semibold p-2 rounded-md  outline-none"
           >
-            <option defaultValue="">--ব্লাড গ্রুপ--</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
+            <option value="" >--ব্লাড গ্রুপ--</option>
+            <option value="A-positive">A+</option>
+            <option value="A-negative">A-</option>
+            <option value="B-positive">B+</option>
+            <option value="B-negative">B-</option>
+            <option value="AB-positive">AB+</option>
+            <option value="AB-negative">AB-</option>
+            <option value="O-positive">O+</option>
+            <option value="O-negative">O-</option>
           </select>
         </div>
       </div>
@@ -87,7 +100,7 @@ const Donners = () => {
               <th>একশন</th>
             </tr>
           </thead>
-          {donners.map((donner, index) => (
+          {donner.map((donner, index) => (
             <Donner key={index} donner={donner} />
           ))}
         </table>
