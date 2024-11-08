@@ -5,22 +5,29 @@ import { AuthContext } from "../contexts/AuthContextComponent";
 import { Navigate } from "react-router-dom";
 
 const AdminProtected = ({ children }) => {
-  const { admin, error, loading } = useIsAdmin();
-  const {user}= useContext(AuthContext)
-  
-  if (!user) {
+  const { admin, error, loading: adminLoading } = useIsAdmin();
+  const { user, loading } = useContext(AuthContext);
+
+  // if (!user) {
+  //   return (
+  //     <Navigate to="/login"/>
+  //   );
+  // }
+
+  if (error) {
     return (
-      <Navigate to="/login"/>
+      <div className="w-full min-h-screen flex items-center justify-center">
+        {error}
+      </div>
     );
   }
 
-
-  if(error){
-    return <div className="w-full min-h-screen flex items-center justify-center">{error}</div>
-  }
-
-  if(loading){
-    return <div className="w-full min-h-screen flex items-center justify-center"><Loading/></div>
+  if (loading || adminLoading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <Loading />
+      </div>
+    );
   }
 
   if (admin !== "admin") {
@@ -36,7 +43,12 @@ const AdminProtected = ({ children }) => {
       </div>
     );
   }
-  return children;
+  
+  if (user) {
+    return children;
+  }
+
+  return <Navigate to="/login" />;
 };
 
 export default AdminProtected;

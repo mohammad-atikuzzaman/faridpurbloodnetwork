@@ -48,7 +48,7 @@ const Profile = () => {
                 <td>{userinfo?.phone}</td>
               </tr>
               <tr>
-                <td>ফোন নাম্বার</td>
+                <td>ইমেইল</td>
                 <td>{userinfo?.userEmail}</td>
               </tr>
               <tr>

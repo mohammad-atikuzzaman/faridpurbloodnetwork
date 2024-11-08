@@ -8,6 +8,10 @@ import Profile from "./pages/Profile";
 import Donners from "./pages/Donners";
 import DonnerDetail from "./pages/DonnerDetail";
 import AdminProtected from "./protected/AdminProtected";
+import AdminPanel from "./pages/AdminPanel";
+import BloodRequests from "./componetnts/BloodRequests";
+import Donneted from "./componetnts/Donneted";
+import Canceled from "./componetnts/Canceled";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +38,24 @@ const router = createBrowserRouter([
         {
             path:"/donner-details/:id",
             element: <AdminProtected><DonnerDetail/></AdminProtected>
+        },
+        {
+            path:"/admin-panel",
+            element: <AdminProtected><AdminPanel/></AdminProtected>,
+            children: [
+                {
+                    index: true,
+                    element: <AdminProtected><BloodRequests/></AdminProtected>
+                },
+                {
+                    path:"/admin-panel/donated",
+                    element: <AdminProtected><Donneted/></AdminProtected>
+                },
+                {
+                    path:"/admin-panel/canceled",
+                    element: <AdminProtected><Canceled/></AdminProtected>
+                },
+            ]
         },
         {
             path:"/donners",

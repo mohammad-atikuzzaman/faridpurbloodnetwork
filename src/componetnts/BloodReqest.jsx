@@ -22,23 +22,28 @@ const BloodReqest = () => {
             title: "আবেদন সফল হয়েছে",
             showConfirmButton: true,
           });
-          form.reset()
+          form.reset();
         }
       })
       .catch((err) => console.error(err));
   };
 
   return (
-    <div className="text-center my-16 px-4">
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold  text-red-500">
-        রক্তের জন্য আবেদন করুণ
-      </h2>
-      <p className="font-semibold text-gray-500 mt-4">
-        আপনার কেন রক্ত লাগবে, কোথায় লাগবে, রোগীর নাম, রোগীর সাথে যোগাযোগ এর জন্য
-        ফোন নাম্বার, রক্তের গ্রুপ -- সব তথ্য সঠিক ভাবে দিয়ে রক্তের জন্য আবেদন
-        করুণ।
-      </p>
-      <form onSubmit={handleReqestBlood} className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
+    <div className="text-center my-16">
+      <div className="bg-red-50 py-6 mb-6">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold  text-red-500">
+          রক্তের জন্য আবেদন করুণ
+        </h2>
+        <p className="font-semibold text-gray-500 mt-4">
+          আপনার কেন রক্ত লাগবে, কোথায় লাগবে, রোগীর নাম, রোগীর সাথে যোগাযোগ এর
+          জন্য ফোন নাম্বার, রক্তের গ্রুপ -- সব তথ্য সঠিক ভাবে দিয়ে রক্তের জন্য
+          আবেদন করুণ।
+        </p>
+      </div>
+      <form
+        onSubmit={handleReqestBlood}
+        className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 px-4"
+      >
         <div className="form-control">
           <label className="label">
             <span className="label-text font-semibold">নাম</span>
@@ -96,7 +101,7 @@ const BloodReqest = () => {
             name="bloodGroup"
             className="select select-bordered w-full"
           >
-            <option value="">-- অপশন নির্বাচন করুন --</option>
+            <option value="">রক্ত গ্রুপ নির্বাচন করুন</option>
             <option value="A-positive">A+</option>
             <option value="A-negative">A-</option>
             <option value="B-positive">B+</option>

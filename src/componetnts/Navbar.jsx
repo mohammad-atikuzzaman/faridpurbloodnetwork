@@ -51,7 +51,7 @@ const Navbar = () => {
           )}
         </div>
         {displayMenu && (
-          <menu className="absolute top-14 -left-2 shadow-md bg-white min-h-screen px-8 py-2 text-lg text-red-500">
+          <menu className="absolute top-14 -left-2 shadow-md bg-white min-h-screen px-8 py-2 text-lg text-red-500 rounded-md">
             <ul className="space-y-3">
               {menus?.map((m, i) => (
                 <li key={i}>
@@ -131,12 +131,12 @@ const Navbar = () => {
                 <a>{user?.email}</a>
               </li>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile" className="font-semibold">Profile</Link>
               </li>
               <li>
                 <button
                   onClick={handleLogout}
-                  className="btn btn-error text-white"
+                  className="bg-red-500 font-semibold text-white"
                 >
                   Logout
                 </button>
@@ -148,7 +148,7 @@ const Navbar = () => {
         ) : (
           <Link
             to="/login"
-            className="btn font-bold text-lg bg-red-500 text-white"
+            className="px-2 py-2 rounded-md font-bold md:text-lg bg-red-500 text-white hover:bg-red-600"
           >
             ডোনার হন
           </Link>

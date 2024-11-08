@@ -210,7 +210,7 @@ const Register = () => {
                 name="bloodGroup"
                 className="select select-bordered w-full max-w-xs"
               >
-                <option value="">-- অপশন নির্বাচন করুন --</option>
+                <option value="">রক্ত গ্রুপ নির্বাচন করুন</option>
                 <option value="A-positive">A+</option>
                 <option value="A-negative">A-</option>
                 <option value="B-positive">B+</option>

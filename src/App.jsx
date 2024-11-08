@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <section className="container mx-auto">
+      <section className="container mx-auto min-h-screen">
         <Outlet />
       </section>
       <Footer />
