@@ -232,6 +232,7 @@ const Register = () => {
                 type="date"
                 name="date"
                 placeholder="বিগত রক্ত দানের তারিখ"
+                max={new Date().toISOString().split("T")[0]}
                 className="input input-bordered"
                 required
               />

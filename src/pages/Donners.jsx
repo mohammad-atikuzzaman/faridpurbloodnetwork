@@ -60,13 +60,13 @@ const Donners = () => {
           </form>
         </>
         <div className="flex justify-between items-center">
-          <h2 className="font-semibold text-lg">ডোনার সর্ট করুন </h2>
+          <h2 className="font-semibold text-base md:text-lg">ডোনার সর্ট করুন </h2>
           <select
             value={selectedVillage}
             onChange={(e) => setSelectedVillage(e.target.value)}
             className="border border-red-400 text-gray-600 font-semibold p-2 rounded-md outline-none"
           >
-            <option value="">--গ্রাম এর নাম--</option>
+            <option value="">গ্রাম এর নাম</option>
             {villages.map((village, i) => (
               <option key={i} value={village}>
                 {village}
@@ -78,7 +78,7 @@ const Donners = () => {
             onChange={(e) => setSelectedBloodGroup(e.target.value)}
             className="border border-red-400 text-gray-600 font-semibold p-2 rounded-md  outline-none"
           >
-            <option value="" >--ব্লাড গ্রুপ--</option>
+            <option value="" >ব্লাড গ্রুপ</option>
             <option value="A-positive">A+</option>
             <option value="A-negative">A-</option>
             <option value="B-positive">B+</option>

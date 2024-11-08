@@ -9,30 +9,30 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
-  const { user, loading , logOut} = useContext(AuthContext);
+  const { user, loading, logOut } = useContext(AuthContext);
   // console.log(user)
 
-  const handleLogout =()=>{
+  const handleLogout = () => {
     logOut()
-    .then(()=>{
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "লগ আউট সফল হয়েছে",
-        showConfirmButton: false,
-        timer: 1500,
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "লগ আউট সফল হয়েছে",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${err.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-    })
-    .catch(err=>{
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: `${err.message}`,
-        showConfirmButton: false,
-        timer: 1500
-      });
-    })
-  }
+  };
 
   return (
     <div className="navbar sticky top-0 mb-4 z-20 bg-white shadow-md rounded-md container mx-auto">
@@ -65,6 +65,16 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               ))}
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-red-600 font-semibold underline" : ""
+                  }
+                  to="/admin-panel"
+                >
+                  এডমিন প্যানেল
+                </NavLink>
+              </li>
             </ul>
           </menu>
         )}
@@ -86,6 +96,16 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-red-600 font-semibold underline" : ""
+              }
+              to="/admin-panel"
+            >
+              এডমিন প্যানেল
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">
@@ -97,10 +117,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt={user?.displayName}
-                  src={user?.photoURL}
-                />
+                <img alt={user?.displayName} src={user?.photoURL} />
               </div>
             </div>
             <ul
@@ -117,16 +134,23 @@ const Navbar = () => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <button onClick={handleLogout} className="btn btn-error text-white">Logout</button>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-error text-white"
+                >
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
-        ) : loading? <Loading/>: (
+        ) : loading ? (
+          <Loading />
+        ) : (
           <Link
             to="/login"
             className="btn font-bold text-lg bg-red-500 text-white"
           >
-            Login
+            ডোনার হন
           </Link>
         )}
       </div>
