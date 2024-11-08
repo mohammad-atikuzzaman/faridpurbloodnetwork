@@ -1,9 +1,11 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../contexts/AuthContextComponent";
 
 const SingleRequest = ({ r }) => {
   const { name, blood, disease, phone, hospital, _id } = r;
+  const {setRefetch, refetch}= useContext(AuthContext)
 
   const handleCancel = () => {
     Swal.fire({
@@ -54,7 +56,7 @@ const SingleRequest = ({ r }) => {
                 .delete(
                   `${import.meta.env.VITE_BASE_URL}/delete-donation/${_id}`
                 )
-                .then((res) => console.log(res))
+                .then(()=> setRefetch(!refetch))
                 .catch((err) => console.error(err));
             }
           })

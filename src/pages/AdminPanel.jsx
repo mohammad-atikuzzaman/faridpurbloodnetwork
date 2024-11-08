@@ -2,7 +2,6 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const AdminPanel = () => {
   const location = useLocation();
-  console.log(location.pathname);
   return (
     <div>
       <div className="text-center bg-red-50 py-6 space-y-4">
@@ -37,17 +36,6 @@ const AdminPanel = () => {
           }
         >
           সফল ডনেশন
-        </NavLink>
-        <NavLink
-          to="/admin-panel/canceled"
-          role="tab"
-          className={
-            location.pathname === "/admin-panel/canceled"
-              ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
-              : "tab text-gray-500 font-semibold"
-          }
-        >
-          বাতিল ডনেশন
         </NavLink>
       </div>
 

@@ -1,18 +1,21 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SingleRequest from "./SingleRequest";
+import { AuthContext } from "../contexts/AuthContextComponent";
 
 const BloodRequests = () => {
   const [requests, setRequests] = useState([]);
+  const { refetch } = useContext(AuthContext);
   useEffect(() => {
     axios(`${import.meta.env.VITE_BASE_URL}/request`)
       .then((res) => setRequests(res.data))
       .catch((err) => console.error(err));
-  }, []);
-  console.log(requests);
+  }, [refetch]);
+
+  //   console.log(requests);
   return (
-    <div>
-      <div className=" overflow-x-auto">
+    <div className=" overflow-x-auto">
+      {requests.length > 0 ? (
         <table className="table text-center">
           <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
             <tr>
@@ -20,17 +23,23 @@ const BloodRequests = () => {
               <th>ব্লাড গ্রুপ</th>
               <th>রোগ</th>
               <th>ফোন নাম্বার</th>
-              <th>হসপিটাল</th> 
+              <th>হসপিটাল</th>
               <th>অ্যাকশান</th>
             </tr>
           </thead>
           <tbody className="font-normal text-gray-500">
-            {
-                requests.map((r,i)=> <SingleRequest key={i} r={r}/>)
-            }
+            {requests.map((r, i) => (
+              <SingleRequest key={i} r={r} />
+            ))}
           </tbody>
         </table>
-      </div>
+      ) : (
+        <div className="flex items-center justify-center text-center min-h-screen">
+          <h2 className="text-3xl font-semibold text-red-400">
+            There are no blood request now
+          </h2>
+        </div>
+      )}
     </div>
   );
 };

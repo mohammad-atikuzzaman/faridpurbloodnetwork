@@ -16,6 +16,9 @@ const AuthContextComponent = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
+  const [refetch, setRefetch]= useState(false)
+
   const registerWithEmailPass = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -52,7 +55,9 @@ const AuthContextComponent = ({ children }) => {
     loading,
     setLoading,
     setUserInfo,
-    userinfo
+    userinfo,
+    setRefetch,
+    refetch,
   };
 
   return (
