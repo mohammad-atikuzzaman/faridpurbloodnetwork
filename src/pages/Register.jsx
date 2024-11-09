@@ -8,7 +8,8 @@ const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Register = () => {
-  const { registerWithEmailPass, updateUserProfile, setLoading } = useContext(AuthContext);
+  const { registerWithEmailPass, updateUserProfile, setLoading } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
 
@@ -40,8 +41,16 @@ const Register = () => {
         text: "কম পক্ষে ৬ সংখ্যার একটি পাসওয়ার্ড দিন!",
       });
     }
+    const isValidPhoneNumber = (phone) => /^01[789534][0-9]{8}$/.test(phone);
+    if (!isValidPhoneNumber(phone)) {
+      return Swal.fire({
+        icon: "error",
+        title: "দুঃখিত",
+        text: "আপনার ১১ সংখ্যার ফোন নাম্বার দিন ।",
+      });
+    }
     // Validation: Check if all fields contain only English characters
-    const isEnglishOnly = (text) => /^[a-zA-Z0-9\s.,'-+]+$/.test(text);
+    const isEnglishOnly = (text) => /^[a-zA-Z0-9\s.,'@#?!%&+-]+$/.test(text);
     if (
       !isEnglishOnly(userName) ||
       !isEnglishOnly(password) ||
@@ -55,7 +64,7 @@ const Register = () => {
       });
     }
 
-    setLoad(true)
+    setLoad(true);
 
     if (file) {
       const formData = new FormData();
@@ -87,7 +96,7 @@ const Register = () => {
             .post(`${import.meta.env.VITE_BASE_URL}/save-user`, userInfo)
             .then((res) => {
               if (res.status === 202) {
-                setLoad(false)
+                setLoad(false);
                 return Swal.fire({
                   position: "center",
                   icon: "error",
@@ -102,7 +111,7 @@ const Register = () => {
                 .then(() => {
                   updateUserProfile(userName, photoUrl)
                     .then(() => {
-                      setLoading(true)
+                      setLoading(true);
                       Swal.fire({
                         position: "center",
                         icon: "success",
@@ -143,10 +152,10 @@ const Register = () => {
               });
             });
         } else {
-          //console.error("Image upload failed:", data.error);
+          console.error("Image upload failed:", data.error);
         }
       } catch (error) {
-        //console.error("Error uploading image:", error);
+        console.error("Error uploading image:", error);
       }
     } else {
       Swal.fire({

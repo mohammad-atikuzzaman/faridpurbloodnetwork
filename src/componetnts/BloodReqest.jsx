@@ -1,7 +1,10 @@
 import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
+import Loading from "./Loading";
 
 const BloodReqest = () => {
+  const [load, setLoad]= useState(false)
   const handleReqestBlood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,6 +15,16 @@ const BloodReqest = () => {
     const blood = form.bloodGroup.value;
     const info = { name, phone, hospital, disease, blood };
 
+    const isValidPhoneNumber = (phone) => /^01[789534][0-9]{8}$/.test(phone);
+    if (!isValidPhoneNumber(phone)) {
+      return Swal.fire({
+        icon: "error",
+        title: "দুঃখিত",
+        text: "আপনার ১১ সংখ্যার ফোন নাম্বার দিন ।",
+      });
+    }
+    setLoad(true)
+
     axios
       .post(`${import.meta.env.VITE_BASE_URL}/blood-request`, info)
       .then((res) => {
@@ -20,11 +33,12 @@ const BloodReqest = () => {
             position: "center",
             icon: "success",
             title: "আবেদন সফল হয়েছে",
-            text: "কর্তৃপক্ষ কিছুক্ষন এর মধ্যে আপনার সাথে যোগাযোগ করবেন ।", 
+            text: "কর্তৃপক্ষ কিছুক্ষন এর মধ্যে আপনার সাথে যোগাযোগ করবেন ।",
             showConfirmButton: false,
             timer: 3000,
           });
           form.reset();
+          setLoad(false)
         }
       })
       .catch((err) => console.error(err));
@@ -116,8 +130,8 @@ const BloodReqest = () => {
         </div>
 
         <div className="form-control mt-6 md:col-span-2">
-          <button className="btn bg-red-400 font-bold text-lg text-white">
-            আবেদন করুণ
+          <button disabled={load} type="submit" className="btn bg-red-400 font-bold text-lg text-white">
+            {load? <Loading/>:"আবেদন করুণ"}
           </button>
         </div>
       </form>
