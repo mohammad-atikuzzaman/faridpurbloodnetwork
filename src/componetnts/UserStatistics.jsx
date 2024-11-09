@@ -14,7 +14,7 @@ const UserStatistics = () => {
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(data);
+
   return (
     <>
       <div className="text-center bg-red-50 py-6 mt-8 px-4">
@@ -26,7 +26,7 @@ const UserStatistics = () => {
           সংখ্যা
         </p>
       </div>
-      <div className="grid grid-cols-3 text-center border rounded-xl shadow-md w-[95%] md:w-[90%] lg:w-[80%] mx-auto mt-2 hover:scale-105 transition-all">
+      <div className="grid grid-cols-3 text-center border rounded-xl shadow-md w-[95%] md:w-[90%] lg:w-[80%] mx-auto mt-4 hover:scale-[103%] transition-all">
         <div className=" py-8 md:py-10 lg:py-12 ">
           <FaUsers className="mx-auto text-xl text-red-400" />
           <h2 className="font-semibold text-gray-400">ডোনার</h2>
@@ -43,7 +43,7 @@ const UserStatistics = () => {
             {moment().format("MMM Do YY")}
           </div>
         </div>
-        <div className="border-x bg-red-50 hover:bg-red-100 py-8 md:py-10 lg:py-12">
+        <div className=" bg-red-100 py-8 md:py-10 lg:py-12">
           <GiLifeTap className="mx-auto text-xl" />
           <h2 className="font-semibold text-gray-400">ডোনেশন</h2>
           <CountUp start={0} end={data?.successfully} duration={5}>
