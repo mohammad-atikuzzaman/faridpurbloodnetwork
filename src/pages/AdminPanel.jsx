@@ -40,6 +40,18 @@ const AdminPanel = () => {
           >
             সফল ডনেশন
           </NavLink>
+
+          <NavLink
+            to="/admin-panel/members"
+            role="tab"
+            className={
+              pathname === "/admin-panel/members"
+                ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
+                : "tab text-gray-500 font-semibold"
+            }
+          >
+            সদস্য
+          </NavLink>
         </div>
       )}
 

@@ -10,7 +10,7 @@ const Donneted = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-      <div className=" overflow-x-auto">
+      <div className=" overflow-x-auto min-h-screen">
         {data.length > 0 ? (
           <table className="table text-center">
             <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">

@@ -8,11 +8,11 @@ const Donners = () => {
   const [villages, setVillages] = useState([]);
 
   const [selectedVillage, setSelectedVillage] = useState("");
-  console.log(selectedVillage);
+  // console.log(selectedVillage);
   const [selectedBloodGroup, setSelectedBloodGroup] = useState("");
-  console.log(selectedBloodGroup);
+  // console.log(selectedBloodGroup);
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -42,23 +42,22 @@ const Donners = () => {
   // console.log(villages);
   return (
     <div className="">
-      <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-8">
-        <>
-          <form
-            onSubmit={handleSearch}
-            className="bg-white w-[90%] mx-auto rounded-md flex items-center"
-          >
-            <input
-              type="text"
-              name="search"
-              placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
-              className="w-[90%] p-4 bg-transparent outline-none border-none"
-            />
-            <button type="submit" className="w-[10%] border-l-2" title="search">
-              <FaSearch className="mx-auto text-red-400 text-2xl" />
-            </button>
-          </form>
-        </>
+      <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-2">
+        <form
+          onSubmit={handleSearch}
+          className="bg-white w-[90%] mx-auto rounded-md flex items-center"
+        >
+          <input
+            type="text"
+            name="search"
+            placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
+            className="w-[90%] p-4 bg-transparent outline-none border-none"
+          />
+          <button type="submit" className="w-[10%] border-l-2" title="search">
+            <FaSearch className="mx-auto text-red-400 text-2xl" />
+          </button>
+        </form>
+
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-base md:text-lg">
             ডোনার সর্ট করুন{" "}
@@ -92,7 +91,7 @@ const Donners = () => {
           </select>
         </div>
       </div>
-      <div className=" overflow-x-auto">
+      <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
           <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
             <tr>

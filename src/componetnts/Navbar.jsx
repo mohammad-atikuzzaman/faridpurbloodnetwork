@@ -12,7 +12,6 @@ const Navbar = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
   const { user, loading, logOut } = useContext(AuthContext);
   const { admin } = useIsAdmin();
-  console.log(admin);
 
   const handleLogout = () => {
     logOut()
