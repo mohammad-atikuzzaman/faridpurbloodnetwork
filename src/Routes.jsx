@@ -11,6 +11,7 @@ import AdminProtected from "./protected/AdminProtected";
 import AdminPanel from "./pages/AdminPanel";
 import BloodRequests from "./componetnts/BloodRequests";
 import Donneted from "./componetnts/Donneted";
+import PatientDetails from "./componetnts/PatientDetails";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
                 {
                     path:"/admin-panel/donated",
                     element: <AdminProtected><Donneted/></AdminProtected>
+                },
+                {
+                    path:"/admin-panel/patient-details/:id",
+                    element: <PatientDetails/>
                 },
             ]
         },

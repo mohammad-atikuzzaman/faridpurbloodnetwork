@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const AdminPanel = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   return (
     <div>
       <div className="text-center bg-red-50 py-6 space-y-4">
@@ -14,30 +14,34 @@ const AdminPanel = () => {
         </p>
       </div>
 
-      <div role="tablist" className="tabs tabs-lifted overflow-hidden">
-        <NavLink
-          to="/admin-panel"
-          role="tab"
-          className={
-            location.pathname === "/admin-panel"
-              ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
-              : "tab text-gray-500 font-semibold"
-          }
-        >
-        ব্লাড রিকুয়েস্ট 
-        </NavLink>
-        <NavLink
-          to="/admin-panel/donated"
-          role="tab"
-          className={
-            location.pathname === "/admin-panel/donated"
-              ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
-              : "tab text-gray-500 font-semibold"
-          }
-        >
-          সফল ডনেশন
-        </NavLink>
-      </div>
+      {pathname.includes("patient-details") ? (
+        ""
+      ) : (
+        <div role="tablist" className="tabs tabs-lifted overflow-hidden">
+          <NavLink
+            to="/admin-panel"
+            role="tab"
+            className={
+              pathname === "/admin-panel"
+                ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
+                : "tab text-gray-500 font-semibold"
+            }
+          >
+            ব্লাড রিকুয়েস্ট
+          </NavLink>
+          <NavLink
+            to="/admin-panel/donated"
+            role="tab"
+            className={
+              pathname === "/admin-panel/donated"
+                ? "tab tab-active text-white [--tab-bg:orange] font-semibold [--tab-border-color:red]"
+                : "tab text-gray-500 font-semibold"
+            }
+          >
+            সফল ডনেশন
+          </NavLink>
+        </div>
+      )}
 
       <Outlet />
     </div>

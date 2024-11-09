@@ -18,8 +18,7 @@ const Donneted = () => {
                 <th>নাম</th>
                 <th>ব্লাড গ্রুপ</th>
                 <th>রোগ</th>
-                <th>ফোন নাম্বার</th>
-                <th>হসপিটাল</th>
+                <th>অ্যাকশান</th>
               </tr>
             </thead>
             <tbody className="font-normal text-gray-500">
