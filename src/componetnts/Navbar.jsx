@@ -6,11 +6,13 @@ import menus from "../utils/navmenu";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import Loading from "./Loading";
 import Swal from "sweetalert2";
+import useIsAdmin from "../hooks/useIsAdmin";
 
 const Navbar = () => {
   const [displayMenu, setDisplayMenu] = useState(false);
   const { user, loading, logOut } = useContext(AuthContext);
-  // console.log(user)
+  const { admin } = useIsAdmin();
+  console.log(admin);
 
   const handleLogout = () => {
     logOut()
@@ -96,16 +98,18 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
-          <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "text-red-600 font-semibold underline" : ""
-              }
-              to="/admin-panel"
-            >
-              এডমিন প্যানেল
-            </NavLink>
-          </li>
+          {admin === "admin" && (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-red-600 font-semibold underline" : ""
+                }
+                to="/admin-panel"
+              >
+                এডমিন প্যানেল
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
@@ -131,7 +135,9 @@ const Navbar = () => {
                 <a>{user?.email}</a>
               </li>
               <li>
-                <Link to="/profile" className="font-semibold">Profile</Link>
+                <Link to="/profile" className="font-semibold">
+                  Profile
+                </Link>
               </li>
               <li>
                 <button

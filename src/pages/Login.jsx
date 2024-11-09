@@ -12,8 +12,6 @@ const Login = () => {
     const userEmail = form.email.value;
     const password = form.password.value;
 
-    // console.log(userEmail, password);
-
     logInWithEmailPass(userEmail, password)
     .then(()=>{
       navigate("/")
@@ -25,7 +23,14 @@ const Login = () => {
         timer: 1500,
       });
     })
-    .catch((err)=>console.error(err))
+    .catch(()=>{
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "দুঃখিত !",
+        text: "সঠিক ইমেইল/পাসওয়ার্ড  প্রদান করুন"
+      })
+    })
   };
   return (
     <div className="hero min-h-screen">
