@@ -36,7 +36,6 @@ const SingleRequest = ({ r }) => {
     });
   };
 
-
   return (
     <>
       <tr>
@@ -47,16 +46,16 @@ const SingleRequest = ({ r }) => {
         <th>{hospital}</th>
         <th>
           <section className="dropdown dropdown-left dropdown-end">
-            <div tabIndex={0} role="button" className="btn m-1">
+            <button tabIndex={0} role="button" className="btn m-1">
               Click
-            </div>
+            </button>
             <ul
               tabIndex={0}
               className="dropdown-content menu bg-red-50 rounded-box z-[1] w-52 p-2 shadow"
             >
               <li
                 className="bg-green-400 my-1 rounded-md"
-                onClick={()=>setIsDialogOpen(true)}
+                onClick={() => setIsDialogOpen(true)}
               >
                 <a>গ্রহন করুন</a>
               </li>
@@ -67,9 +66,7 @@ const SingleRequest = ({ r }) => {
           </section>
         </th>
       </tr>
-      {
-        isDialogOpen && <DialogBox setIsDialogOpen={setIsDialogOpen}/>
-      }
+      {isDialogOpen && <DialogBox setIsDialogOpen={setIsDialogOpen} r={r} />}
     </>
   );
 };

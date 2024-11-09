@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import axios from "axios";
+import { getDifferenceInDays } from "../componetnts/Donner";
 
 const Profile = () => {
   const { user, setUserInfo, userinfo } = useContext(AuthContext);
@@ -15,6 +16,8 @@ const Profile = () => {
   useEffect(() => {
     getUserInfo(user?.email);
   }, [user]);
+
+  const donationDiff = getDifferenceInDays(userinfo?.lastDonationDate || new Date());
 
   return (
     <div>
@@ -54,6 +57,20 @@ const Profile = () => {
               <tr>
                 <td>গ্রাম</td>
                 <td>{userinfo?.village}</td>
+              </tr>
+              <tr>
+                <td>শেষ রক্ত দান করেছে</td>
+                <td>
+                  {donationDiff} <br /> <span>দিন আগে</span>
+                </td>
+              </tr>
+              <tr>
+                <td>পরিচয়</td>
+                <td>{userinfo?.role}</td>
+              </tr>
+              <tr>
+                <td>রক্ত দান করছেন</td>
+                <td>{userinfo?.donationCount} বার</td>
               </tr>
             </tbody>
           </table>

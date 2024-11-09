@@ -7,6 +7,7 @@ import { getDifferenceInDays } from "../componetnts/Donner";
 const DonnerDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
+  
   useEffect(() => {
     axios(`${import.meta.env.VITE_BASE_URL}/donner-details/${id}`)
       .then((res) => setData(res?.data))
@@ -48,7 +49,9 @@ const DonnerDetail = () => {
               </tr>
               <tr>
                 <td>শেষ রক্ত দান করেছে</td>
-                <td>{donationDiff} <span>দিন আগে</span></td>
+                <td>
+                  {donationDiff} <br /> <span>দিন আগে</span>
+                </td>
               </tr>
               <tr>
                 <td>ইমেইল </td>
@@ -58,7 +61,14 @@ const DonnerDetail = () => {
                 <td>গ্রাম</td>
                 <td>{data?.village}</td>
               </tr>
-
+              <tr>
+                <td>পরিচয়</td>
+                <td>{data?.role}</td>
+              </tr>
+              <tr>
+                <td>রক্ত দান করছেন</td>
+                <td>{data?.donationCount} বার</td>
+              </tr>
             </tbody>
           </table>
         </div>

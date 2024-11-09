@@ -11,7 +11,6 @@ const PatientDetails = () => {
       .catch((err) => console.error(err));
   }, [id]);
 
-  console.log(data);
   return (
     <div className="bg-gray-600 text-white min-h-screen">
       <h2 className="text-4xl font-semibold uppercase animate-pulse text-center p-5 mb-4">Patient details</h2>
@@ -43,15 +42,15 @@ const PatientDetails = () => {
           </tr>
           <tr>
             <th>তারিখ</th>
-            <td>Brice Swyre</td>
+            <td>{data?.date}</td>
           </tr>
           <tr>
             <th>ডোনার এর নাম</th>
-            <td>Brice Swyre</td>
+            <td>{data?.donner}</td>
           </tr> 
           <tr>
             <th>ডোনার এর ফোন নাম্বার</th>
-            <td>Brice Swyre</td>
+            <td>{data?.donnerPhone}</td>
           </tr>
         </tbody>
       </table>

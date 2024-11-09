@@ -15,7 +15,7 @@ const Donneted = () => {
           <table className="table text-center">
             <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
               <tr>
-                <th>নাম</th>
+                <th>রোগীর নাম</th>
                 <th>ব্লাড গ্রুপ</th>
                 <th>রোগ</th>
                 <th>অ্যাকশান</th>

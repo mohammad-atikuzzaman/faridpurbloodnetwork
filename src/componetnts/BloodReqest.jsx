@@ -11,7 +11,7 @@ const BloodReqest = () => {
     const disease = form.disease.value;
     const blood = form.bloodGroup.value;
     const info = { name, phone, hospital, disease, blood };
-    console.log(info);
+
     axios
       .post(`${import.meta.env.VITE_BASE_URL}/blood-request`, info)
       .then((res) => {
@@ -20,7 +20,9 @@ const BloodReqest = () => {
             position: "center",
             icon: "success",
             title: "আবেদন সফল হয়েছে",
-            showConfirmButton: true,
+            text: "কর্তৃপক্ষ কিছুক্ষন এর মধ্যে আপনার সাথে যোগাযোগ করবেন ।", 
+            showConfirmButton: false,
+            timer: 3000,
           });
           form.reset();
         }

@@ -1,15 +1,35 @@
 import Swal from "sweetalert2";
 import "./style.css"; // Importing styles
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContextComponent";
 
-const updateDonner = (date, phone) => {
+// this api for update donner info
+const updateDonner = (date, donnerPhone, setIsDialogOpen) => {
   axios
-    .patch(`${import.meta.env.VITE_BASE_URL}/update-donner/${phone}`, { date })
-    .then((res) => console.log(res))
+    .patch(`${import.meta.env.VITE_BASE_URL}/update-donor/${donnerPhone}`, {
+      date,
+    })
+    .then((res) => {
+      if (res.status === 200) setIsDialogOpen(false);
+    })
     .catch((err) => console.error(err));
 };
 
-const setSuccessDonnation = () => {
+// this api for save donation data
+const setSuccessDonnation = (
+  name,
+  blood,
+  disease,
+  phone,
+  hospital,
+  date,
+  donner,
+  donnerPhone,
+  _id,
+  setRefetch,
+  refetch
+) => {
   axios
     .post(`${import.meta.env.VITE_BASE_URL}/successful-donation`, {
       name,
@@ -19,42 +39,61 @@ const setSuccessDonnation = () => {
       hospital,
       date,
       donner,
-      donnerPhone
+      donnerPhone,
     })
     .then((res) => {
       if (res.status === 200) {
         Swal.fire({
           title: "নিশ্চিত!",
-          text: "নিশ্চিত করা হয়েছে",
+          text: "ডনেশন টি নিশ্চিত করা হয়েছে",
           icon: "success",
         });
         axios
           .delete(`${import.meta.env.VITE_BASE_URL}/delete-donation/${_id}`)
           .then(() => {
-            
-            // setRefetch(!refetch)
-      })
+            setRefetch(!refetch);
+          })
           .catch((err) => console.error(err));
       }
     })
     .catch((err) => console.error(err));
 };
 
-const DialogBox = ({ setIsDialogOpen }) => {
+const DialogBox = ({ setIsDialogOpen, r }) => {
+  const { name, blood, disease, phone, hospital, _id } = r;
+  const { setRefetch, refetch } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const phone = form.phone.value;
+    const donner = form.name.value;
+    const donnerPhone = form.phone.value;
     const date = new Date().toLocaleDateString();
 
-    updateDonner(date, phone);
+    updateDonner(date, donnerPhone, setIsDialogOpen);
+
+    setSuccessDonnation(
+      name,
+      blood,
+      disease,
+      phone,
+      hospital,
+      date,
+      donner,
+      donnerPhone,
+      _id,
+      setRefetch,
+      refetch
+    );
   };
 
   return (
     <>
-      <div className="backdrop" onClick={() => setIsDialogOpen(false)}></div>
-      <div className="dialog-box">
+      <section
+        className="backdrop"
+        onClick={() => setIsDialogOpen(false)}
+      ></section>
+      <section className="dialog-box">
         <h2 className="text-xl font-semibold">ডোনার এর তথ্য</h2>
         <p className="mb-4">
           ডোনার এর নাম এবং ফোন নাম্বার দেওয়ার পরে কনফার্ম করুন
@@ -70,7 +109,7 @@ const DialogBox = ({ setIsDialogOpen }) => {
           </label>
           <button type="submit">কনফার্ম</button>
         </form>
-      </div>
+      </section>
     </>
   );
 };
