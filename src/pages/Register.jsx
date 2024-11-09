@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import axios from "axios";
@@ -8,8 +8,9 @@ const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
 const Register = () => {
-  const { registerWithEmailPass, updateUserProfile } = useContext(AuthContext);
+  const { registerWithEmailPass, updateUserProfile, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [load, setLoad] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -54,6 +55,8 @@ const Register = () => {
       });
     }
 
+    setLoad(true)
+
     if (file) {
       const formData = new FormData();
       formData.append("image", file);
@@ -78,38 +81,47 @@ const Register = () => {
             lastDonationDate,
             photoUrl,
           };
-          //console.log(userInfo);
 
-          // Register the user with email, password
-          registerWithEmailPass(userEmail, password)
-            .then(() => {
-              updateUserProfile(userName, photoUrl)
-                .then(() => {
-                  Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "রেজিস্ত্রেশন সফল হয়েছে !",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                })
-                .catch((err) => {
-                  Swal.fire({
-                    position: "center",
-                    icon: "error",
-                    title: `${err.message}`,
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
+          // save users data in database
+          axios
+            .post(`${import.meta.env.VITE_BASE_URL}/save-user`, userInfo)
+            .then((res) => {
+              if (res.status === 202) {
+                setLoad(false)
+                return Swal.fire({
+                  position: "center",
+                  icon: "error",
+                  title: `দুঃখিত!`,
+                  text: "এই ফোন নাম্বার/ইমেইল দিয়ে অ্যাকাউন্ট আছে",
+                  showConfirmButton: false,
+                  timer: 1500,
                 });
-              // redirect the user to home page if registration success
-              navigate("/");
-
-              // save users data in database
-              axios
-                .post(`${import.meta.env.VITE_BASE_URL}/save-user`, userInfo)
-                .then((res) => {
-                  //console.log(res);
+              }
+              // Register the user with email, password
+              registerWithEmailPass(userEmail, password)
+                .then(() => {
+                  updateUserProfile(userName, photoUrl)
+                    .then(() => {
+                      setLoading(true)
+                      Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "রেজিস্ত্রেশন সফল হয়েছে !",
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                    })
+                    .catch((err) => {
+                      Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: `${err.message}`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                    });
+                  // redirect the user to home page if registration success
+                  navigate("/");
                 })
                 .catch((err) => {
                   Swal.fire({
@@ -122,7 +134,7 @@ const Register = () => {
                 });
             })
             .catch((err) => {
-              Swal.fire({
+              return Swal.fire({
                 position: "center",
                 icon: "error",
                 title: `${err.message}`,
@@ -261,8 +273,16 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-red-400 font-bold text-lg text-white">
-                রেজিস্টার
+              <button
+                type="submit"
+                disabled={load}
+                className="btn bg-red-400 font-bold text-lg text-white"
+              >
+                {load ? (
+                  <span className="loading loading-bars loading-md text-red-400"></span>
+                ) : (
+                  "রেজিস্টার"
+                )}
               </button>
             </div>
             <p className="text-center mt-6">
