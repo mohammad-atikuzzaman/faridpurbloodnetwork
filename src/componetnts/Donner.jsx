@@ -21,22 +21,22 @@ const Donner = ({ donner }) => {
   const donationDiff = getDifferenceInDays(lastDonationDate);
 
   return (
-    <tr className="text-xs">
+    <tr className="text-xs md:text-sm">
       <td>
         <div className="flex items-center gap-3 text-left">
           <div className="avatar">
-            <div className="mask mask-squircle h-14 w-14">
+            <div className="mask mask-squircle h-8 md:h-10 lg:h-14 w-8 md:w-10 lg:w-14">
               <img src={photoUrl} alt={userName} />
             </div>
           </div>
           <div>
-            <div className="font-bold">{userName}</div>
-            <div className="text-sm opacity-50">{village}</div>
+            <div className="font-medium">{userName}</div>
+            <div className="opacity-50">{village}</div>
           </div>
         </div>
       </td>
-      <td>{bloodGroup}</td>
-      <td className="">
+      <td className="font-light">{bloodGroup}</td>
+      <td>
         <div>
           {donationDiff >= 90 ? (
             <BsCheckLg className="text-green-600 text-xl mx-auto" />
@@ -49,7 +49,7 @@ const Donner = ({ donner }) => {
         </div>
       </td>
       <th>
-        <Link to={`/donner-details/${_id}`} className="btn btn-sm">
+        <Link to={`/donner-details/${_id}`} className="btn btn-xs md:btn-sm text-xs font-normal">
           বিস্তারিত
         </Link>
       </th>

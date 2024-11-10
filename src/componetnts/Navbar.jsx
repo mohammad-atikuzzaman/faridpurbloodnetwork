@@ -52,10 +52,10 @@ const Navbar = () => {
           )}
         </div>
         {displayMenu && (
-          <menu className="absolute top-14 -left-2 shadow-md bg-white min-h-screen px-8 py-2 text-lg text-red-500 rounded-md">
-            <ul className="space-y-3">
+          <menu className="w-screen absolute top-14 -left-2 shadow-md bg-black bg-opacity-60 text-lg text-red-500 rounded-md overflow-hidden " onClick={()=>setDisplayMenu(false)}>
+            <ul className="space-y-3 inline-block px-4 py-12 bg-white min-h-screen">
               {menus?.map((m, i) => (
-                <li onClick={()=> setDisplayMenu(false)} key={i}>
+                <li onClick={() => setDisplayMenu(false)} key={i}>
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-red-600 font-semibold underline" : ""
@@ -67,7 +67,7 @@ const Navbar = () => {
                 </li>
               ))}
               {admin === "admin" && (
-                <li onClick={()=> setDisplayMenu(false)}>
+                <li onClick={() => setDisplayMenu(false)}>
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-red-600 font-semibold underline" : ""

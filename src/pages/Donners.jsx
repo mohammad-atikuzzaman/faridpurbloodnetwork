@@ -41,17 +41,17 @@ const Donners = () => {
   // console.log(donner);
   // console.log(villages);
   return (
-    <div className="">
+    <>
       <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-2">
         <form
           onSubmit={handleSearch}
-          className="bg-white w-[75%] md:w-[90%] mx-auto rounded-md flex items-center"
+          className="bg-white w-[90%] mx-auto rounded-md flex items-center"
         >
           <input
             type="text"
             name="search"
             placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
-            className="w-[90%] p-4 bg-transparent outline-none border-none"
+            className="w-[75%] md:w-[90%] p-4 bg-transparent outline-none border-none"
           />
           <button
             type="submit"
@@ -100,9 +100,9 @@ const Donners = () => {
       </div>
       <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
-          <thead className="text-base md:text-lg lg:text-xl bg-red-50">
+          <thead className="text-xs md:text-sm lg:text-base bg-red-50">
             <tr>
-              <th>নাম/ঠিকানা</th>
+              <th className="text-left">নাম/ঠিকানা</th>
               <th>ব্লাড গ্রুপ</th>
               <th>স্ট্যাটাস</th>
               <th>একশন</th>
@@ -115,7 +115,7 @@ const Donners = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 
