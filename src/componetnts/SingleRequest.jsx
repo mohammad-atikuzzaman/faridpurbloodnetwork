@@ -38,15 +38,15 @@ const SingleRequest = ({ r }) => {
 
   return (
     <>
-      <tr>
-        <th>{name}</th>
-        <th>{blood}</th>
-        <th>{disease}</th>
-        <th>{phone}</th>
-        <th>{hospital}</th>
-        <th>
+      <tr className="text-xs md:text-sm lg:text-base">
+        <td>{name}</td>
+        <td>{blood}</td>
+        <td>{disease}</td>
+        <td>{phone}</td>
+        <td>{hospital}</td>
+        <td>
           <section className="dropdown dropdown-left dropdown-end">
-            <button tabIndex={0} role="button" className="btn m-1">
+            <button tabIndex={0} role="button" className="btn btn-xs md:btn-sm text-xs md:text-sm m-1">
               Click
             </button>
             <ul
@@ -64,7 +64,7 @@ const SingleRequest = ({ r }) => {
               </li>
             </ul>
           </section>
-        </th>
+        </td>
       </tr>
       {isDialogOpen && <DialogBox setIsDialogOpen={setIsDialogOpen} r={r} />}
     </>

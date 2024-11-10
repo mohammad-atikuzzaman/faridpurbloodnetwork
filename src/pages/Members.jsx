@@ -32,18 +32,18 @@ const Members = () => {
             type="text"
             name="search"
             placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
-            className="w-[90%] p-4 bg-transparent outline-none border-none"
+            className="w-[75%] md:w-[90%] p-4 bg-transparent outline-none border-none"
           />
-          <button type="submit" className="w-[10%] border-l-2" title="search">
+          <button type="submit" className="w-[25%] md:w-[10%] border-l-2" title="search">
             <FaSearch className="mx-auto text-red-400 text-2xl" />
           </button>
         </form>
       </div>
       <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
-          <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
+          <thead className="text-sm md:text-base lg:text-lg bg-red-50">
             <tr>
-              <th>নাম/ঠিকানা</th>
+              <th className="text-left">নাম/ঠিকানা</th>
               <th>ফোন নাম্বার</th>
               <th>পরিচয়</th>
             </tr>

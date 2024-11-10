@@ -14,10 +14,10 @@ const BloodRequests = () => {
 
   //   console.log(requests);
   return (
-    <div className=" overflow-x-auto">
+    <div className="min-h-screen overflow-x-auto">
       {requests.length > 0 ? (
         <table className="table text-center">
-          <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
+          <thead className="text-xs md:text-sm lg:text-base bg-red-50">
             <tr>
               <th>নাম</th>
               <th>ব্লাড গ্রুপ</th>

@@ -21,9 +21,9 @@ const Donner = ({ donner }) => {
   const donationDiff = getDifferenceInDays(lastDonationDate);
 
   return (
-    <tr>
+    <tr className="text-xs">
       <td>
-        <div className="flex items-center gap-3  text-left">
+        <div className="flex items-center gap-3 text-left">
           <div className="avatar">
             <div className="mask mask-squircle h-14 w-14">
               <img src={photoUrl} alt={userName} />
@@ -44,12 +44,12 @@ const Donner = ({ donner }) => {
             <RxCross2 className="text-red-600 text-xl mx-auto" />
           )}
         </div>
-        <div className="text-sm opacity-50">
+        <div className="md:text-sm opacity-50">
           <span>রক্ত দিয়েছে </span> {donationDiff} <span>দিন আগে</span>
         </div>
       </td>
       <th>
-        <Link to={`/donner-details/${_id}`} className="btn btn-md">
+        <Link to={`/donner-details/${_id}`} className="btn btn-sm">
           বিস্তারিত
         </Link>
       </th>

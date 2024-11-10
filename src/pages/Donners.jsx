@@ -45,7 +45,7 @@ const Donners = () => {
       <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-2">
         <form
           onSubmit={handleSearch}
-          className="bg-white w-[90%] mx-auto rounded-md flex items-center"
+          className="bg-white w-[75%] md:w-[90%] mx-auto rounded-md flex items-center"
         >
           <input
             type="text"
@@ -53,14 +53,18 @@ const Donners = () => {
             placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
             className="w-[90%] p-4 bg-transparent outline-none border-none"
           />
-          <button type="submit" className="w-[10%] border-l-2" title="search">
+          <button
+            type="submit"
+            className="w-[25%] md:w-[10%] border-l-2"
+            title="search"
+          >
             <FaSearch className="mx-auto text-red-400 text-2xl" />
           </button>
         </form>
 
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-base md:text-lg">
-            ডোনার সর্ট করুন{" "}
+            ডোনার সর্ট করুন
           </h2>
           <select
             value={selectedVillage}
@@ -69,8 +73,11 @@ const Donners = () => {
           >
             <option value="">গ্রাম এর নাম</option>
             {villages.map((village, i) => (
-              <option key={i} value={village}>
-                {village}
+              <option
+                key={i}
+                value={village.length > 12 ? village.slice(0, 12) : village}
+              >
+                {village.length > 12 ? village.slice(0, 12) : village}
               </option>
             ))}
           </select>
@@ -93,7 +100,7 @@ const Donners = () => {
       </div>
       <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
-          <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
+          <thead className="text-base md:text-lg lg:text-xl bg-red-50">
             <tr>
               <th>নাম/ঠিকানা</th>
               <th>ব্লাড গ্রুপ</th>

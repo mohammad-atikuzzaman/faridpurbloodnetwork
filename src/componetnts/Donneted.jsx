@@ -13,7 +13,7 @@ const Donneted = () => {
       <div className=" overflow-x-auto min-h-screen">
         {data.length > 0 ? (
           <table className="table text-center">
-            <thead className="text-lg md:text-xl lg:text-2xl bg-red-50">
+            <thead className="text-xs md:text-sm lg:text-base bg-red-50">
               <tr>
                 <th>রোগীর নাম</th>
                 <th>ব্লাড গ্রুপ</th>
@@ -21,7 +21,7 @@ const Donneted = () => {
                 <th>অ্যাকশান</th>
               </tr>
             </thead>
-            <tbody className="font-normal text-gray-500">
+            <tbody className="text-gray-500">
               {data.map((r, i) => (
                 <SuccessfullDonation key={i} r={r} />
               ))}
