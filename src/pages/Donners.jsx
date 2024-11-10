@@ -73,11 +73,8 @@ const Donners = () => {
           >
             <option value="">গ্রাম এর নাম</option>
             {villages.map((village, i) => (
-              <option
-                key={i}
-                value={village.length > 12 ? village.slice(0, 12) : village}
-              >
-                {village.length > 12 ? village.slice(0, 12) : village}
+              <option key={i} value={village}>
+                {village.length > 10 ? village.slice(0, 10) : village}
               </option>
             ))}
           </select>

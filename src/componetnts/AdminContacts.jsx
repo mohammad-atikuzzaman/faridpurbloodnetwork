@@ -24,7 +24,7 @@ const AdminContacts = () => {
           সভাপতি এর সাথে সরাসরি কথা বলতে কল করুন ০১৭০০০০০০০ নাম্বার এ অথবা  এডমিন গন এর সাথে যোগাযোগ করুন ।
         </p>
       </div>
-      <div className="pb-6 px-4 grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="pb-6 px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {admins.map((admin,index)=> <AdminCard key={index} admin={admin}/>)}
       </div>
     </div>

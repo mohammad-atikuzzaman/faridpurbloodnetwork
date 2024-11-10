@@ -45,22 +45,22 @@ const SingleRequest = ({ r }) => {
         <td>{phone}</td>
         <td>{hospital}</td>
         <td>
-          <section className="dropdown dropdown-left dropdown-end">
+          <section className="dropdown dropdown-left">
             <button tabIndex={0} role="button" className="btn btn-xs md:btn-sm text-xs md:text-sm m-1">
               Click
             </button>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-red-50 rounded-box z-[1] w-52 p-2 shadow"
+              className="dropdown-content menu bg-red-50 z-[1] w-32 p-1 shadow rounded-md"
             >
               <li
                 className="bg-green-400 my-1 rounded-md"
                 onClick={() => setIsDialogOpen(true)}
               >
-                <a>গ্রহন করুন</a>
+                গ্রহন করুন
               </li>
               <li className="bg-red-400 my-1 rounded-md" onClick={handleCancel}>
-                <a>বাতিল করুন</a>
+                বাতিল করুন
               </li>
             </ul>
           </section>
