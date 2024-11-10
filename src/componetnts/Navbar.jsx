@@ -55,7 +55,7 @@ const Navbar = () => {
           <menu className="absolute top-14 -left-2 shadow-md bg-white min-h-screen px-8 py-2 text-lg text-red-500 rounded-md">
             <ul className="space-y-3">
               {menus?.map((m, i) => (
-                <li key={i}>
+                <li onClick={()=> setDisplayMenu(false)} key={i}>
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-red-600 font-semibold underline" : ""
@@ -66,16 +66,18 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               ))}
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "text-red-600 font-semibold underline" : ""
-                  }
-                  to="/admin-panel"
-                >
-                  এডমিন প্যানেল
-                </NavLink>
-              </li>
+              {admin === "admin" && (
+                <li onClick={()=> setDisplayMenu(false)}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-red-600 font-semibold underline" : ""
+                    }
+                    to="/admin-panel"
+                  >
+                    এডমিন প্যানেল
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </menu>
         )}
