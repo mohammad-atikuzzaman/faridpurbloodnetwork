@@ -4,7 +4,7 @@ const AdminPanel = () => {
   const { pathname } = useLocation();
   return (
     <div>
-      <div className="text-center bg-red-50 py-6 space-y-4">
+      <div className="text-center bg-red-50 py-6 space-y-4 rounded-t-3xl px-2">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-red-400">
           এডমিন কন্ট্রোল পানেল
         </h2>

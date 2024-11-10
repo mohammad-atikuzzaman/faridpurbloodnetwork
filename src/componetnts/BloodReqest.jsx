@@ -2,9 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Loading from "./Loading";
+import { FaHandHoldingHeart } from "react-icons/fa";
 
 const BloodReqest = () => {
-  const [load, setLoad]= useState(false)
+  const [load, setLoad] = useState(false);
   const handleReqestBlood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +24,7 @@ const BloodReqest = () => {
         text: "আপনার ১১ সংখ্যার ফোন নাম্বার দিন ।",
       });
     }
-    setLoad(true)
+    setLoad(true);
 
     axios
       .post(`${import.meta.env.VITE_BASE_URL}/blood-request`, info)
@@ -38,19 +39,20 @@ const BloodReqest = () => {
             timer: 3000,
           });
           form.reset();
-          setLoad(false)
+          setLoad(false);
         }
       })
       .catch((err) => console.error(err));
   };
 
   return (
-    <div className="text-center my-16">
-      <div className="bg-red-50 py-6 mb-6">
+    <div className="text-center my-8">
+      <div className="bg-red-50 py-6 mb-2 px-2 md:mb-6 rounded-t-3xl">
+        <FaHandHoldingHeart className="mx-auto text-3xl text-red-500" />
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold  text-red-500">
           রক্তের জন্য আবেদন করুণ
         </h2>
-        <p className="font-semibold text-gray-500 mt-4">
+        <p className="font-semibold text-gray-500  mt-2 md:mt-4">
           আপনার কেন রক্ত লাগবে, কোথায় লাগবে, রোগীর নাম, রোগীর সাথে যোগাযোগ এর
           জন্য ফোন নাম্বার, রক্তের গ্রুপ -- সব তথ্য সঠিক ভাবে দিয়ে রক্তের জন্য
           আবেদন করুণ।
@@ -58,7 +60,7 @@ const BloodReqest = () => {
       </div>
       <form
         onSubmit={handleReqestBlood}
-        className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 px-4"
+        className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 p-4 border border-red-100 mx-2 rounded-xl shadow-md"
       >
         <div className="form-control">
           <label className="label">
@@ -130,8 +132,12 @@ const BloodReqest = () => {
         </div>
 
         <div className="form-control mt-6 md:col-span-2">
-          <button disabled={load} type="submit" className="btn bg-red-400 font-bold text-lg text-white">
-            {load? <Loading/>:"আবেদন করুণ"}
+          <button
+            disabled={load}
+            type="submit"
+            className="btn bg-red-400 font-bold text-lg text-white"
+          >
+            {load ? <Loading /> : "আবেদন করুণ"}
           </button>
         </div>
       </form>
