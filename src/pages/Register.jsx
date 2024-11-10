@@ -51,16 +51,11 @@ const Register = () => {
     }
     // Validation: Check if all fields contain only English characters
     const isEnglishOnly = (text) => /^[a-zA-Z0-9\s.,'@#?!%&+-]+$/.test(text);
-    if (
-      !isEnglishOnly(userName) ||
-      !isEnglishOnly(password) ||
-      !isEnglishOnly(phone) ||
-      !isEnglishOnly(village)
-    ) {
+    if (!isEnglishOnly(password) || !isEnglishOnly(phone)) {
       return Swal.fire({
         icon: "error",
         title: "দুঃখিত",
-        text: "নাম, ঠিকানা সব ইংরেজি তে দিন!",
+        text: "পাসওয়ার্ড/ফোন নাম্বার ইংরেজি তে দিন!",
       });
     }
 
@@ -279,6 +274,7 @@ const Register = () => {
                 name="photo"
                 accept="image/*"
                 className="file-input file-input-bordered w-full max-w-xs"
+                required
               />
             </div>
             <div className="form-control mt-6">
