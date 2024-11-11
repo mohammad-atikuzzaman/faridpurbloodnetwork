@@ -1,7 +1,7 @@
 const SuccessfullDonation = ({ r }) => {
   const { name, blood, disease, phone, hospital, _id } = r;
   return (
-    <tr className="text-xs">
+    <tr className="text-xs md:sm lg:text-base">
       <td>{name}</td>
       <td>{blood}</td>
       <td>{disease}</td>

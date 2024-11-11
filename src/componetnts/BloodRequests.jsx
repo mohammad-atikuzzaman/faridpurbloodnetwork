@@ -2,17 +2,30 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import SingleRequest from "./SingleRequest";
 import { AuthContext } from "../contexts/AuthContextComponent";
+import Loading from "./Loading";
 
 const BloodRequests = () => {
   const [requests, setRequests] = useState([]);
-  const { refetch } = useContext(AuthContext);
+  const { refetch} = useContext(AuthContext);
+  const [load, setLoad]= useState(false)
   useEffect(() => {
+    setLoad(true)
     axios(`${import.meta.env.VITE_BASE_URL}/request`)
-      .then((res) => setRequests(res.data))
-      .catch((err) => console.error(err));
+      .then((res) => {
+        setLoad(false)
+        setRequests(res.data);
+      })
+      .catch((err) => {
+        setLoad(false)
+        console.error(err);
+      });
   }, [refetch]);
 
   //   console.log(requests);
+  if(load){
+    return <div className="w-full min-h-screen flex items-center justify-center"><Loading/></div>
+  }
+
   return (
     <div className="min-h-screen overflow-x-auto">
       {requests.length > 0 ? (

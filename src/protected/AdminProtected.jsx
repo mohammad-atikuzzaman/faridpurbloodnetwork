@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 const AdminProtected = ({ children }) => {
   const { user, loading, admin } = useContext(AuthContext);
 
-  if (loading) {
+  if (loading ) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center">
         <Loading />

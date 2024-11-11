@@ -39,8 +39,8 @@ const Member = ({ member }) => {
             </div>
           </div>
           <div>
-            <div className="font-semibold text-xs">{userName}</div>
-            <div className="text-xs opacity-50">{village}</div>
+            <div className="font-semibold text-xs md:text-sm lg:text-base">{userName}</div>
+            <div className="text-xs md:text-sm opacity-50">{village}</div>
           </div>
         </div>
       </td>

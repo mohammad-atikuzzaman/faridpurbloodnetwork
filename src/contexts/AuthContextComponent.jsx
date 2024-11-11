@@ -49,7 +49,9 @@ const AuthContextComponent = ({ children }) => {
         .then((res) => {
           setAdmin(res?.data);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          console.error(err);
+        });
     }
 
     return () => unSubscribe();
@@ -67,7 +69,6 @@ const AuthContextComponent = ({ children }) => {
     userinfo,
     setRefetch,
     refetch,
-    setAdmin,
     admin,
   };
 
