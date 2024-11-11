@@ -17,7 +17,10 @@ const Profile = () => {
     getUserInfo(user?.email);
   }, [user]);
 
-  const donationDiff = getDifferenceInDays(userinfo?.lastDonationDate || new Date());
+
+  const donationDiff = getDifferenceInDays(
+    userinfo?.lastDonationDate || new Date()
+  );
 
   return (
     <div>
@@ -61,7 +64,13 @@ const Profile = () => {
               <tr>
                 <td>শেষ রক্ত দান করেছে</td>
                 <td>
-                  {donationDiff} <br /> <span>দিন আগে</span>
+                  {userinfo?.lastDonationDate ? (
+                    <>
+                      <span>{donationDiff}</span> <br /> <span>দিন আগে</span>{" "}
+                    </>
+                  ) : (
+                    <span>কখনো দান করে নি !</span>
+                  )}
                 </td>
               </tr>
               <tr>

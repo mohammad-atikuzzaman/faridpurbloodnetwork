@@ -38,18 +38,31 @@ const Donner = ({ donner }) => {
       <td className="font-light">{bloodGroup}</td>
       <td>
         <div>
-          {donationDiff >= 90 ? (
-            <BsCheckLg className="text-green-600 text-xl mx-auto" />
+          {lastDonationDate ? (
+            <>
+              {donationDiff >= 90 ? (
+                <BsCheckLg className="text-green-600 text-xl mx-auto" />
+              ) : (
+                <RxCross2 className="text-red-600 text-xl mx-auto" />
+              )}
+            </>
           ) : (
-            <RxCross2 className="text-red-600 text-xl mx-auto" />
+            <BsCheckLg className="text-green-600 text-xl mx-auto" />
           )}
         </div>
         <div className="md:text-sm opacity-50">
-          <span>রক্ত দিয়েছে </span> {donationDiff} <span>দিন আগে</span>
+          {lastDonationDate ? (
+            <span>রক্ত দিয়েছে {donationDiff} দিন আগে</span>
+          ) : (
+            <span>কখনো দান করে নি !</span>
+          )}
         </div>
       </td>
       <th>
-        <Link to={`/donner-details/${_id}`} className="btn btn-xs md:btn-sm text-xs font-normal">
+        <Link
+          to={`/donner-details/${_id}`}
+          className="btn btn-xs md:btn-sm text-xs font-normal"
+        >
           বিস্তারিত
         </Link>
       </th>

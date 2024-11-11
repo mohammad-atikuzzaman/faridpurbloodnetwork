@@ -1,36 +1,44 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import Swal from "sweetalert2";
+import Loading from "../componetnts/Loading";
 
 const Login = () => {
+  const [load, setLoad] = useState(false);
   const { logInWithEmailPass } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const userEmail = form.email.value;
     const password = form.password.value;
 
+    if (userEmail && password) {
+      setLoad(true);
+    }
     logInWithEmailPass(userEmail, password)
-    .then(()=>{
-      navigate("/")
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "লগইন সফল হয়েছে",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    })
-    .catch(()=>{
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "দুঃখিত !",
-        text: "সঠিক ইমেইল/পাসওয়ার্ড  প্রদান করুন"
+      .then(() => {
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "লগইন সফল হয়েছে",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLoad(false);
       })
-    })
+      .catch(() => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "দুঃখিত !",
+          text: "সঠিক ইমেইল/পাসওয়ার্ড  প্রদান করুন",
+        });
+        setLoad(false);
+      });
   };
   return (
     <div className="hero min-h-screen">
@@ -65,8 +73,8 @@ const Login = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-red-400 font-bold text-lg text-white">
-                লগইন
+              <button type="submit" disabled={load} className="btn bg-red-400 font-bold text-lg text-white">
+                {load ? <Loading /> : "লগইন"}
               </button>
             </div>
             <p className="text-center mt-6">

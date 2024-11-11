@@ -110,7 +110,8 @@ const Register = () => {
                       Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "রেজিস্ত্রেশন সফল হয়েছে !",
+                        title: "অভিনন্দন !",
+                        text: "রেজিস্ট্রেশান সফল হয়েছে ।",
                         showConfirmButton: false,
                         timer: 1500,
                       });
@@ -206,7 +207,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-semibold">ঠিকানা</span>
+                  <span className="label-text font-semibold">গ্রাম এর নাম</span>
                 </label>
                 <input
                   type="text"
@@ -241,7 +242,7 @@ const Register = () => {
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold">
-                  বিগত রক্ত দানের তারিখ
+                  বিগত রক্ত দানের তারিখ, যদি কখনো দিয়ে থাকেন ।
                 </span>
               </label>
               <input
@@ -249,8 +250,7 @@ const Register = () => {
                 name="date"
                 placeholder="বিগত রক্ত দানের তারিখ"
                 max={new Date().toISOString().split("T")[0]}
-                className="input input-bordered"
-                required
+                className="input input-bordered w-full"
               />
             </div>
             <div className="form-control">

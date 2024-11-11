@@ -50,7 +50,13 @@ const DonnerDetail = () => {
               <tr>
                 <td>শেষ রক্ত দান করেছে</td>
                 <td>
-                  {donationDiff} <br /> <span>দিন আগে</span>
+                {data?.lastDonationDate ? (
+                    <>
+                      <span>{donationDiff}</span> <br /> <span>দিন আগে</span>{" "}
+                    </>
+                  ) : (
+                    <span>কখনো দান করে নি !</span>
+                  )}
                 </td>
               </tr>
               <tr>
