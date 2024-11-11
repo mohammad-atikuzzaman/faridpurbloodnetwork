@@ -145,7 +145,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="bg-red-1000 font-semibold text-white"
+                    className="bg-red-500 font-semibold text-white"
                   >
                     Logout
                   </button>
@@ -157,9 +157,9 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="px-2 py-2 rounded-md font-bold md:text-lg bg-red-1000 text-white hover:bg-red-600"
+              className="px-3 py-1 rounded-md font-bold md:text-lg bg-red-500 text-white hover:bg-red-600"
             >
-              ডোনার হন
+              Login
             </Link>
           )}
         </div>
