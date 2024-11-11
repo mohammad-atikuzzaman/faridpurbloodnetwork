@@ -47,12 +47,12 @@ const BloodReqest = () => {
 
   return (
     <div className="text-center my-8">
-      <div className="bg-red-50 py-6 mb-2 px-2 md:mb-6 rounded-t-3xl">
-        <FaHandHoldingHeart className="mx-auto text-3xl text-red-500" />
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold  text-red-500">
+      <div className="bg-red-100 py-6 mb-2 px-2 md:mb-6 rounded-t-3xl">
+        <FaHandHoldingHeart className="mx-auto text-3xl text-red-600" />
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold  text-red-600">
           রক্তের জন্য আবেদন করুণ
         </h2>
-        <p className="font-semibold text-gray-500  mt-2 md:mt-4">
+        <p className="font-semibold text-gray-500 text-xs md:text-sm lg:text-base mt-2 md:mt-4">
           আপনার কেন রক্ত লাগবে, কোথায় লাগবে, রোগীর নাম, রোগীর সাথে যোগাযোগ এর
           জন্য ফোন নাম্বার, রক্তের গ্রুপ -- সব তথ্য সঠিক ভাবে দিয়ে রক্তের জন্য
           আবেদন করুণ।

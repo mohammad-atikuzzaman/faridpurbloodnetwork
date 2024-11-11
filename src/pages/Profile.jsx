@@ -35,7 +35,7 @@ const Profile = () => {
         <div className="overflow-x-auto mb-6">
           <table className="table table-zebra text-center">
             {/* head */}
-            <thead className="bg-red-50">
+            <thead className="bg-red-100">
               <tr>
                 <th className="text-lg">টাইটেল</th>
                 <th className="text-lg">বিস্তারিত</th>

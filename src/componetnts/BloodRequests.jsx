@@ -17,7 +17,7 @@ const BloodRequests = () => {
     <div className="min-h-screen overflow-x-auto">
       {requests.length > 0 ? (
         <table className="table text-center">
-          <thead className="text-xs md:text-sm lg:text-base bg-red-50">
+          <thead className="text-xs md:text-sm lg:text-base bg-red-100">
             <tr>
               <th>নাম</th>
               <th>ব্লাড গ্রুপ</th>
@@ -35,7 +35,7 @@ const BloodRequests = () => {
         </table>
       ) : (
         <div className="flex items-center justify-center text-center min-h-screen">
-          <h2 className="text-3xl font-semibold text-red-400">
+          <h2 className="text-3xl font-semibold text-red-600">
             There are no blood request now
           </h2>
         </div>

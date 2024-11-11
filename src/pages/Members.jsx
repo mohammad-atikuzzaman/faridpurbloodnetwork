@@ -31,17 +31,17 @@ const Members = () => {
           <input
             type="text"
             name="search"
-            placeholder="ডোনার এর নাম দিয়ে সার্চ করুন"
+            placeholder="সদস্য এর নাম দিয়ে সার্চ করুন"
             className="w-[75%] md:w-[90%] p-4 bg-transparent outline-none border-none"
           />
           <button type="submit" className="w-[25%] md:w-[10%] border-l-2" title="search">
-            <FaSearch className="mx-auto text-red-400 text-2xl" />
+            <FaSearch className="mx-auto text-red-600 text-2xl" />
           </button>
         </form>
       </div>
       <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
-          <thead className="text-sm md:text-base lg:text-lg bg-red-50">
+          <thead className="text-sm md:text-base lg:text-lg bg-red-100">
             <tr>
               <th className="text-left">নাম/ঠিকানা</th>
               <th>ফোন নাম্বার</th>

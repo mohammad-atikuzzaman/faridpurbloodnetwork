@@ -13,7 +13,7 @@ const Donneted = () => {
       <div className=" overflow-x-auto min-h-screen">
         {data.length > 0 ? (
           <table className="table text-center">
-            <thead className="text-xs md:text-sm lg:text-base bg-red-50">
+            <thead className="text-xs md:text-sm lg:text-base bg-red-100">
               <tr>
                 <th>রোগীর নাম</th>
                 <th>ব্লাড গ্রুপ</th>
@@ -29,7 +29,7 @@ const Donneted = () => {
           </table>
         ) : (
           <div className="flex items-center justify-center text-center min-h-screen">
-            <h2 className="text-3xl font-semibold text-red-400">
+            <h2 className="text-3xl font-semibold text-red-600">
               There are no donation
             </h2>
           </div>

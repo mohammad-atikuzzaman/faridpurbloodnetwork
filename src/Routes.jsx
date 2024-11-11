@@ -98,9 +98,9 @@ const router = createBrowserRouter([
       {
         path: "/activity",
         element: (
-          <div className="w-full min-h-screen flex items-center justify-center text-center  bg-red-50 px-4 mb-4">
+          <div className="w-full min-h-screen flex items-center justify-center text-center  bg-red-100 px-4 mb-4">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-red-500 ">
+              <h2 className="text-3xl font-bold text-red-600 ">
                 Under development
               </h2>
               <p>

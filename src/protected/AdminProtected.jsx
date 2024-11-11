@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import Loading from "../componetnts/Loading";
-import useIsAdmin from "../hooks/useIsAdmin";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import { Navigate } from "react-router-dom";
 
 const AdminProtected = ({ children }) => {
-  const { admin } = useIsAdmin();
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, admin } = useContext(AuthContext);
 
   if (loading) {
     return (

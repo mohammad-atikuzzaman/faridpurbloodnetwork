@@ -58,7 +58,7 @@ const Donners = () => {
             className="w-[25%] md:w-[10%] border-l-2"
             title="search"
           >
-            <FaSearch className="mx-auto text-red-400 text-2xl" />
+            <FaSearch className="mx-auto text-red-600 text-2xl" />
           </button>
         </form>
 
@@ -97,7 +97,7 @@ const Donners = () => {
       </div>
       <div className="overflow-x-auto min-h-screen">
         <table className="table text-center">
-          <thead className="text-xs md:text-sm lg:text-base bg-red-50">
+          <thead className="text-xs md:text-sm lg:text-base bg-red-100">
             <tr>
               <th className="text-left">নাম/ঠিকানা</th>
               <th>ব্লাড গ্রুপ</th>

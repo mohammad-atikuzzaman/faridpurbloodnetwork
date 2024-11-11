@@ -15,12 +15,12 @@ const AdminContacts = () => {
 
   return (
     <div>
-      <div className="text-center py-6 mb-2 bg-red-50 rounded-t-3xl">
-        <FaPhoneVolume className="mx-auto text-3xl text-red-500" />
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-red-500">
+      <div className="text-center py-6 mb-2 bg-red-100 rounded-t-3xl">
+        <FaPhoneVolume className="mx-auto text-3xl text-red-600" />
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-red-600">
            যোগাযোগ করুন
         </h2>
-        <p className="text-gray-500 font-semibold mt-4">
+        <p className="text-gray-500 font-semibold text-xs md:text-sm lg:text-base mt-4">
           সভাপতি এর সাথে সরাসরি কথা বলতে কল করুন ০১৭০০০০০০০ নাম্বার এ অথবা  এডমিন গন এর সাথে যোগাযোগ করুন ।
         </p>
       </div>

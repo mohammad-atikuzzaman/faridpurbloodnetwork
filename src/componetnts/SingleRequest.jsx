@@ -51,7 +51,7 @@ const SingleRequest = ({ r }) => {
             </button>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-red-50 z-[1] w-32 p-1 shadow rounded-md"
+              className="dropdown-content menu bg-red-100 z-[1] w-32 p-1 shadow rounded-md"
             >
               <li
                 className="bg-green-400 my-1 rounded-md"

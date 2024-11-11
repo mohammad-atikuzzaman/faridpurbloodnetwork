@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-red-50 text-gray-500 p-10">
+    <footer className="footer footer-center bg-red-100 text-gray-500 p-10">
       <aside>
         <p className="font-bold">
           Faridpur Blood Network

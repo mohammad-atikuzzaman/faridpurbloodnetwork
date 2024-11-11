@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaPhoneAlt } from "react-icons/fa";
 
 const AdminCard = ({ admin }) => {
@@ -15,8 +16,8 @@ const AdminCard = ({ admin }) => {
         </h2>
         <p className="font-semibold text-xs md:text-sm lg:text-lg text-gray-400">For contact you can call the admin.</p>
         <div className="card-actions justify-end">
-          <a className="btn btn-sm md:btn-lg w-full bg-red-400" href={`tel:+88${phone}`}>
-            <FaPhoneAlt className="text-white text-lg md:text-2xl" />
+          <a className="btn btn-sm md:btn-md w-full bg-red-400" href={`tel:+88${phone}`}>
+            <FaPhoneAlt className="text-white text-lg md:text-xl" />
           </a>
         </div>
       </div>

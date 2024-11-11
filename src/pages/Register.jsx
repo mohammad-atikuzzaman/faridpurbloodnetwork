@@ -284,7 +284,7 @@ const Register = () => {
                 className="btn bg-red-400 font-bold text-lg text-white"
               >
                 {load ? (
-                  <span className="loading loading-bars loading-md text-red-400"></span>
+                  <span className="loading loading-bars loading-md text-red-600"></span>
                 ) : (
                   "রেজিস্টার"
                 )}

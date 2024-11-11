@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -15,9 +16,9 @@ const AuthContextComponent = ({ children }) => {
   const [userinfo, setUserInfo] = useState({});
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
-
-  const [refetch, setRefetch]= useState(false)
+  const [refetch, setRefetch] = useState(false);
 
   const registerWithEmailPass = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -43,6 +44,14 @@ const AuthContextComponent = ({ children }) => {
       setLoading(false);
     });
 
+    if (user) {
+      axios(`${import.meta.env.VITE_BASE_URL}/admin/${user.email}`)
+        .then((res) => {
+          setAdmin(res?.data);
+        })
+        .catch((err) => console.error(err));
+    }
+
     return () => unSubscribe();
   }, [user]);
   const context = {
@@ -58,6 +67,8 @@ const AuthContextComponent = ({ children }) => {
     userinfo,
     setRefetch,
     refetch,
+    setAdmin,
+    admin,
   };
 
   return (
