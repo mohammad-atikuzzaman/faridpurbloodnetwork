@@ -2,17 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Donner from "../componetnts/Donner";
 import { FaSearch } from "react-icons/fa";
+import Loading from "../componetnts/Loading";
 
 const Donners = () => {
   const [donner, setDonner] = useState([]);
   const [villages, setVillages] = useState([]);
+  const [load, setLoad] = useState(false);
 
   const [selectedVillage, setSelectedVillage] = useState("");
-  // console.log(selectedVillage);
   const [selectedBloodGroup, setSelectedBloodGroup] = useState("");
-  // console.log(selectedBloodGroup);
   const [search, setSearch] = useState("");
-  // console.log(search);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -27,19 +26,32 @@ const Donners = () => {
 
   useEffect(() => {
     fetchVillage();
+    setLoad(true);
     axios(
       `${
         import.meta.env.VITE_BASE_URL
       }/donner?village=${selectedVillage}&bloodGroup=${selectedBloodGroup}&userName=${search}`
     )
       .then((res) => {
+        setLoad(false);
         setDonner(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setLoad(false);
+        console.error(err);
+      });
   }, [selectedVillage, selectedBloodGroup, search]);
 
   // console.log(donner);
   // console.log(villages);
+
+  if (load) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <>
       <div className="bg-gray-100 p-4 grid md:grid-cols-2 items-center gap-4 mb-2">
@@ -95,23 +107,29 @@ const Donners = () => {
           </select>
         </div>
       </div>
-      <div className="overflow-x-auto min-h-screen">
-        <table className="table text-center">
-          <thead className="text-xs md:text-sm lg:text-base bg-red-100">
-            <tr>
-              <th className="text-left">নাম/ঠিকানা</th>
-              <th>ব্লাড গ্রুপ</th>
-              <th>স্ট্যাটাস</th>
-              <th>একশন</th>
-            </tr>
-          </thead>
-          <tbody className="">
-            {donner.map((donner, index) => (
-              <Donner key={index} donner={donner} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {donner.length > 0 ? (
+        <div className="overflow-x-auto min-h-screen">
+          <table className="table text-center">
+            <thead className="text-xs md:text-sm lg:text-base bg-red-100">
+              <tr>
+                <th className="text-left">নাম/ঠিকানা</th>
+                <th>ব্লাড গ্রুপ</th>
+                <th>স্ট্যাটাস</th>
+                <th>একশন</th>
+              </tr>
+            </thead>
+            <tbody className="">
+              {donner.map((donner, index) => (
+                <Donner key={index} donner={donner} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="w-full min-h-screen flex items-center justify-center">
+          <h2 className="text-3xl font-bold">There are no donner</h2>
+        </div>
+      )}
     </>
   );
 };
