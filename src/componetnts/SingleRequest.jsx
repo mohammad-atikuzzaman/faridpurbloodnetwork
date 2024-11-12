@@ -54,12 +54,12 @@ const SingleRequest = ({ r }) => {
               className="dropdown-content menu bg-red-100 z-[1] w-32 p-1 shadow rounded-md"
             >
               <li
-                className="bg-green-400 my-1 rounded-md"
+                className="bg-green-400 my-1 md:py-1 md:font-medium text-gray-700 rounded-md cursor-pointer"
                 onClick={() => setIsDialogOpen(true)}
               >
                 গ্রহন করুন
               </li>
-              <li className="bg-red-400 my-1 rounded-md" onClick={handleCancel}>
+              <li className="bg-red-400 my-1 md:py-1 md:font-medium text-gray-700 rounded-md cursor-pointer" onClick={handleCancel}>
                 বাতিল করুন
               </li>
             </ul>
