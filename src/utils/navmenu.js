@@ -14,6 +14,7 @@ const menus = [
         menu: "কার্যক্রম",
         url: "/activity"
     },
+    //this are navigation menu
 ]
 
 export default menus
