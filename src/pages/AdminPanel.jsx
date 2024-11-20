@@ -13,7 +13,7 @@ const AdminPanel = () => {
           করা ডনেসন নিয়ন্ত্রণ করা যাবে
         </p>
       </div>
-      {*comment*}
+      
       {pathname.includes("patient-details") ? (
         ""
       ) : (
