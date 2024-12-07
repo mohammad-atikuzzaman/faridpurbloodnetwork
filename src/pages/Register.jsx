@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
@@ -12,6 +13,7 @@ const Register = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
   const [load, setLoad] = useState(false);
+  const [showPass, setShowPass]= useState(false)
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -253,17 +255,20 @@ const Register = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text font-semibold">পাসওয়ার্ড</span>
               </label>
               <input
-                type="password"
+                type={showPass ? "text": "password"}
                 name="password"
-                placeholder="পাসওয়ার্ড"
+                placeholder="পাসওয়ার্ড দিন"
                 className="input input-bordered"
                 required
               />
+              { showPass?   <FaEyeSlash title="show password" onClick={()=> setShowPass(!showPass)} className="absolute top-[60%] text-gray-600 right-4 text-xl" />  :
+            
+              <FaRegEye title="hide password" onClick={()=> setShowPass(!showPass)} className="absolute top-[60%] text-gray-600 right-4 text-xl" />}
             </div>
             <div className="form-control">
               <label htmlFor="photo" className="font-semibold my-3">
