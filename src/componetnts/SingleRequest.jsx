@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+// import { AuthContext } from "../contexts/AuthContextComponent";
+import DialogBox from "./dialogbox/DialogBox";
 import { AuthContext } from "../contexts/AuthContextComponent";
-import DialogBox from "./dialogbox/Dialogbox";
 
 const SingleRequest = ({ r }) => {
   const { name, blood, disease, phone, hospital, _id } = r;

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -14,6 +14,7 @@ import Donneted from "./componetnts/Donneted";
 import PatientDetails from "./componetnts/PatientDetails";
 import UserProtected from "./protected/UserProtected";
 import Members from "./pages/Members";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {

@@ -9,6 +9,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
 import axios from "axios";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types

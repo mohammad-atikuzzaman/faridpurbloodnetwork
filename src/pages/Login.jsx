@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContextComponent";
 import Swal from "sweetalert2";
 import Loading from "../componetnts/Loading";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const Login = () => {
   const [load, setLoad] = useState(false);
+  const [showPass, setShowPass]= useState(false)
   const { logInWithEmailPass } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -60,17 +62,20 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text font-semibold">পাসওয়ার্ড</span>
               </label>
               <input
-                type="password"
+                type={showPass ? "text": "password"}
                 name="password"
                 placeholder="পাসওয়ার্ড দিন"
                 className="input input-bordered"
                 required
               />
+              { showPass?   <FaEyeSlash title="show password" onClick={()=> setShowPass(!showPass)} className="absolute top-[60%] text-red-400 right-4 text-xl" />  :
+            
+              <FaRegEye title="hide password" onClick={()=> setShowPass(!showPass)} className="absolute top-[60%] text-red-400 right-4 text-xl" />}
             </div>
             <div className="form-control mt-6">
               <button type="submit" disabled={load} className="btn bg-red-400 font-bold text-lg text-white">

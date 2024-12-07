@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminCard from "./AdminCard";
 import { FaPhoneVolume } from "react-icons/fa6";
 import axios from "axios";
@@ -25,7 +25,7 @@ const AdminContacts = () => {
         </p>
       </div>
       <div className="pb-6 px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {admins.map((admin,index)=> <AdminCard key={index} admin={admin}/>)}
+        {admins?.map((admin,index)=> <AdminCard key={index} admin={admin}/>)}
       </div>
     </div>
   );
