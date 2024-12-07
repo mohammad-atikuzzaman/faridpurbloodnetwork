@@ -23,7 +23,7 @@ const Donner = ({ donner }) => {
   return (
     <tr className="text-xs md:text-sm">
       <td>
-        <div className="flex items-center gap-3 text-left">
+        <Link to={`/donner-details/${_id}`} className="flex items-center gap-3 text-left">
           <div className="avatar">
             <div className="mask mask-squircle h-8 md:h-10 lg:h-14 w-8 md:w-10 lg:w-14">
               <img src={photoUrl} alt={userName} />
@@ -33,7 +33,7 @@ const Donner = ({ donner }) => {
             <div className="font-medium">{userName}</div>
             <div className="opacity-50">{village}</div>
           </div>
-        </div>
+        </Link>
       </td>
       <td className="font-light">{bloodGroup}</td>
       <td>
@@ -58,14 +58,14 @@ const Donner = ({ donner }) => {
           )}
         </div>
       </td>
-      <th>
+      {/* <th>
         <Link
           to={`/donner-details/${_id}`}
           className="btn btn-xs md:btn-sm text-xs font-normal"
         >
           বিস্তারিত
         </Link>
-      </th>
+      </th> */}
     </tr>
   );
 };
