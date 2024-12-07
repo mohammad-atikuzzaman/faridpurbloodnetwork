@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContextComponent';
 
 const JoinAsDonner = () => {
+    const {user}= useContext(AuthContext)
+    if(user){
+        return
+    }
     return (
             <div className='flex flex-col-reverse md:flex-row items-center justify-center py-4 bg-red-100 mt-8 rounded-t-3xl rounded-b-lg'>
             <div className='px-2'>
