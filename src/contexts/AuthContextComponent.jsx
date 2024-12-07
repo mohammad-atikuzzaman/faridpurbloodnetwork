@@ -18,6 +18,7 @@ const AuthContextComponent = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
+  const [isOpenPostModal, setIsOpenPostModal] = useState(false);
 
   const [refetch, setRefetch] = useState(false);
 
@@ -29,7 +30,7 @@ const AuthContextComponent = ({ children }) => {
   };
 
   const updateUserProfile = (name, photo) => {
-    return updateProfile(auth.currentUser, {
+    return updateProfile(auth?.currentUser, {
       displayName: name,
       photoURL: photo,
     });
@@ -71,6 +72,8 @@ const AuthContextComponent = ({ children }) => {
     setRefetch,
     refetch,
     admin,
+    isOpenPostModal,
+    setIsOpenPostModal,
   };
 
   return (

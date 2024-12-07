@@ -12,7 +12,7 @@ const menus = [
     {
         icon: "Hello",
         menu: "কার্যক্রম",
-        url: "/activity"
+        url: "/activities"
     },
     //this are navigation menu
 ]
