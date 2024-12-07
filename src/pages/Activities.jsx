@@ -9,7 +9,7 @@ const Activities = () => {
         {!isOpenPostModal && (
           <div
             onClick={() => setIsOpenPostModal(true)}
-            className='w-[300px] text-start rounded-2xl bg-gray-100 p-3 text-xl h-min my-6'>
+            className='w-[300px] text-start rounded-2xl bg-white p-3 text-xl h-min my-6'>
             Write Some Activities
           </div>
         )}
