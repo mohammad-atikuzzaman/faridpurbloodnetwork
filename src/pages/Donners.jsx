@@ -115,7 +115,7 @@ const Donners = () => {
                 <th className="text-left">নাম/ঠিকানা</th>
                 <th>ব্লাড গ্রুপ</th>
                 <th>স্ট্যাটাস</th>
-                <th>একশন</th>
+                {/* <th>একশন</th> */}
               </tr>
             </thead>
             <tbody className="">

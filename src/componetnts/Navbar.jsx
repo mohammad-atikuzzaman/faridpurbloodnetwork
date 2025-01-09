@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
           {displayMenu && (
             <menu
-              className="w-screen absolute top-14 -left-4 shadow-md bg-black bg-opacity-60 text-lg text-red-600 rounded-md overflow-hidden "
+              className="w-screen absolute top-14 -left-4 shadow-md bg-black bg-opacity-60 text-lg text-red-600 overflow-hidden "
               onClick={() => setDisplayMenu(false)}
             >
               <ul className="space-y-3 inline-block px-4 py-12 bg-white min-h-screen">
