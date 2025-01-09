@@ -52,10 +52,10 @@ const Navbar = () => {
           </div>
           {displayMenu && (
             <menu
-              className="w-screen absolute top-14 -left-4 shadow-md bg-black bg-opacity-60 text-lg text-red-600 overflow-hidden "
+              className="w-screen absolute -top-4 -left-4 shadow-md bg-black bg-opacity-60 text-lg text-red-600 overflow-hidden rounded-md "
               onClick={() => setDisplayMenu(false)}
             >
-              <ul className="space-y-3 inline-block px-4 py-12 bg-white min-h-screen">
+              <ul className="space-y-3 inline-block px-4 py-12 bg-white min-h-screen rounded-md">
                 {menus?.map((m, i) => (
                   <li onClick={() => setDisplayMenu(false)} key={i}>
                     <NavLink
