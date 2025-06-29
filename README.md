@@ -1,9 +1,19 @@
-# React + Vite
+# FBN Pabna
+## Blood donation network site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Link: https://fbn-pabna.netlify.app/
+Backend Repository : https://github.com/mohammad-atikuzzaman/fbnBackend
 
-Currently, two official plugins are available:
-this oroject for Faridpur blood network 
+for run this project on local metchine you need to clone this repository and backend repository
+then run the commandn
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm i
+
+```
+then run the command 
+
+```
+npm run dev
+
+```
